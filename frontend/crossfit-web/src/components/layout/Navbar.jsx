@@ -86,10 +86,11 @@ const Navbar = () => {
       <div className="container flex h-16 items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-            <Dumbbell className="h-5 w-5 text-primary-foreground" />
-          </div>
-          <span className="font-bold text-xl">FitForge</span>
+          <img 
+            src="/logo-horizontal.png" 
+            alt="FitForge" 
+            className="h-8 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}

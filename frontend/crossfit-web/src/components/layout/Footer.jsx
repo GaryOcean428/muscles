@@ -102,27 +102,33 @@ const Footer = () => {
         </div>
 
         <div className="border-t mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground">
-            © 2024 FitForge. All rights reserved.
-          </p>
+          <div className="text-sm text-muted-foreground">
+            <p>© 2024 FitForge. All rights reserved.</p>
+            <p className="mt-1">
+              Braden Group Pty Ltd • ABN 21 662 181 740 • ACN 21 662 181 740
+            </p>
+            <p className="mt-1">
+              339 Cambridge Street, Unit 5, Wembley, WA 6014, Australia
+            </p>
+          </div>
           
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
             <a 
-              href="#" 
+              href="https://twitter.com/fitforge" 
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Twitter"
             >
               <Twitter className="h-4 w-4" />
             </a>
             <a 
-              href="#" 
+              href="https://instagram.com/fitforge" 
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Instagram"
             >
               <Instagram className="h-4 w-4" />
             </a>
             <a 
-              href="#" 
+              href="https://github.com/GaryOcean428/fitforge-crossfit-hiit-app" 
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="GitHub"
             >
