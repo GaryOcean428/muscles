@@ -80,6 +80,8 @@ db.init_app(app)
 # Initialize database tables
 with app.app_context():
     try:
+        # Test database connection first
+        db.engine.execute('SELECT 1')
         db.create_all()
         print("Database tables created successfully")
     except Exception as e:
