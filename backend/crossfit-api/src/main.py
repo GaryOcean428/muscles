@@ -42,12 +42,30 @@ app.register_blueprint(payment_bp, url_prefix='/api/payment')
 
 # Database configuration
 database_url = os.environ.get('DATABASE_URL')
+if not database_url:
+    # Try alternative environment variable names
+    database_url = os.environ.get('DATABASE_PRIVATE_URL')
+    
 if database_url:
     # Railway PostgreSQL connection
+    # Fix postgres:// to postgresql:// for SQLAlchemy compatibility
+    if database_url.startswith('postgres://'):
+        database_url = database_url.replace('postgres://', 'postgresql://', 1)
     app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+    print(f"Using PostgreSQL database: {database_url[:50]}...")
 else:
     # Fallback to SQLite for local development
-    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
+    db_path = os.path.join(os.path.dirname(__file__), 'database', 'app.db')
+    os.makedirs(os.path.dirname(db_path), exist_ok=True)
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
+    print(f"Using SQLite database: {db_path}")
+
+# Redis configuration
+redis_url = os.environ.get('REDIS_URL')
+if redis_url:
+    print(f"Redis configured: {redis_url[:50]}...")
+else:
+    print("Redis not configured - using in-memory cache")
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
