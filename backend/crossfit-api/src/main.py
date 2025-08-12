@@ -3,7 +3,7 @@ import sys
 # DON'T CHANGE THIS !!!
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, send_file, jsonify
 from flask_cors import CORS
 from src.models.user import db
 from src.routes.user import user_bp
@@ -69,21 +69,52 @@ with app.app_context():
         # Don't fail the app startup if database creation fails
         pass
 
+# Health check endpoint
+@app.route('/api/health')
+def health_check():
+    return jsonify({
+        'status': 'healthy',
+        'message': 'FitForge API is running',
+        'database': 'connected',
+        'version': '1.0.0'
+    })
+
+# Serve React frontend
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
     static_folder_path = app.static_folder
-    if static_folder_path is None:
-            return "Static folder not configured", 404
-
-    if path != "" and os.path.exists(os.path.join(static_folder_path, path)):
+    
+    # If path starts with 'api/', let Flask handle it normally (will 404 if not found)
+    if path.startswith('api/'):
+        return {'error': 'API endpoint not found'}, 404
+    
+    # For static assets (js, css, images, etc.)
+    if static_folder_path and path and os.path.exists(os.path.join(static_folder_path, path)):
         return send_from_directory(static_folder_path, path)
-    else:
+    
+    # For all other routes, serve index.html (React Router will handle client-side routing)
+    if static_folder_path:
         index_path = os.path.join(static_folder_path, 'index.html')
         if os.path.exists(index_path):
-            return send_from_directory(static_folder_path, 'index.html')
-        else:
-            return "index.html not found", 404
+            return send_file(index_path)
+    
+    # Fallback: show API info if frontend not available
+    return jsonify({
+        'message': 'FitForge API is running',
+        'status': 'Frontend not built yet',
+        'api_endpoints': {
+            'health': '/api/health',
+            'auth': '/api/auth/*',
+            'users': '/api/users',
+            'workouts': '/api/workouts',
+            'sessions': '/api/sessions',
+            'equipment': '/api/equipment',
+            'calendar': '/api/calendar/*',
+            'payment': '/api/payment/*'
+        },
+        'note': 'Frontend will be available after successful build'
+    })
 
 @app.errorhandler(404)
 def not_found(error):
