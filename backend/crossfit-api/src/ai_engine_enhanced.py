@@ -32,8 +32,9 @@ class EnhancedAIWorkoutEngine:
     """
     
     def __init__(self):
-        self.client = openai.OpenAI()
-        self.model = "gpt-4"  # Using GPT-4 for enhanced reasoning
+        from groq import Groq
+        self.client = Groq(api_key=os.environ.get('GROQ_API_KEY'))
+        self.model = "openai/gpt-oss-20b"  # Using OpenAI GPT-OSS-20B via Groq
         
     def generate_workout(self, user_profile: UserProfile, preferences: Dict) -> Dict:
         """
@@ -54,8 +55,12 @@ class EnhancedAIWorkoutEngine:
                     {"role": "system", "content": self._get_enhanced_system_message()},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=3500,
-                temperature=0.7
+                max_completion_tokens=32768,
+                temperature=0.7,
+                top_p=1,
+                reasoning_effort="medium",
+                stream=False,
+                stop=None
             )
             
             # Parse response

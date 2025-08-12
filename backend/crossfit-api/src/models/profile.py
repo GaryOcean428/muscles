@@ -9,7 +9,7 @@ class UserProfile(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False, unique=True)
     fitness_level = db.Column(db.String(20), nullable=False)  # beginner, intermediate, advanced
-    body_type = db.Column(db.String(20), nullable=False)  # ectomorph, mesomorph, endomorph
+    # body_type removed - will be determined through chat UI
     fitness_goals = db.Column(db.Text)  # JSON array of goals
     available_equipment = db.Column(db.Text)  # JSON array of equipment
     workout_preferences = db.Column(db.Text)  # JSON object of preferences
@@ -31,7 +31,6 @@ class UserProfile(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'fitness_level': self.fitness_level,
-            'body_type': self.body_type,
             'fitness_goals': json.loads(self.fitness_goals) if self.fitness_goals else [],
             'available_equipment': json.loads(self.available_equipment) if self.available_equipment else [],
             'workout_preferences': json.loads(self.workout_preferences) if self.workout_preferences else {},

@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from src.models.user import User, db
+from src.models.profile import UserProfile
 from datetime import datetime
 import re
 
@@ -59,6 +60,16 @@ def register():
         user.set_password(password)
         
         db.session.add(user)
+        db.session.flush()  # Get user ID
+        
+        # Create user profile with fitness_level if provided
+        fitness_level = data.get('fitness_level', 'beginner')
+        profile = UserProfile(
+            user_id=user.id,
+            fitness_level=fitness_level
+        )
+        
+        db.session.add(profile)
         db.session.commit()
         
         # Generate token

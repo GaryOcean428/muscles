@@ -169,25 +169,29 @@ Generate the workout now:
         return prompt
     
     def _call_openai_api(self, prompt: str) -> str:
-        """Call OpenAI API to generate workout"""
+        """Call Groq API with OpenAI GPT-OSS-20B to generate workout"""
         try:
-            from openai import OpenAI
-            client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
+            from groq import Groq
+            client = Groq(api_key=os.environ.get('GROQ_API_KEY'))
             
             response = client.chat.completions.create(
-                model="gpt-4",
+                model="openai/gpt-oss-20b",
                 messages=[
                     {"role": "system", "content": "You are an expert fitness trainer who creates personalized workout plans. Always respond with valid JSON."},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=2000,
-                temperature=0.7
+                max_completion_tokens=32768,
+                temperature=0.7,
+                top_p=1,
+                reasoning_effort="medium",
+                stream=False,
+                stop=None
             )
             
             return response.choices[0].message.content.strip()
             
         except Exception as e:
-            print(f"OpenAI API error: {e}")
+            print(f"Groq API error: {e}")
             # Fallback to basic workout generation
             return self._generate_fallback_workout()
     

@@ -25,9 +25,6 @@ const registerSchema = z.object({
   fitness_level: z.enum(['beginner', 'intermediate', 'advanced'], {
     required_error: 'Please select your fitness level',
   }),
-  body_type: z.enum(['ectomorph', 'mesomorph', 'endomorph'], {
-    required_error: 'Please select your body type',
-  }),
   terms: z.boolean().refine(val => val === true, {
     message: 'You must accept the terms and conditions',
   }),
@@ -229,27 +226,10 @@ const RegisterPage = () => {
                 )}
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="body_type">Body Type</Label>
-                <Select onValueChange={(value) => setValue('body_type', value)}>
-                  <SelectTrigger className={errors.body_type ? 'border-destructive' : ''}>
-                    <SelectValue placeholder="Select your body type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="ectomorph">Ectomorph (Lean, fast metabolism)</SelectItem>
-                    <SelectItem value="mesomorph">Mesomorph (Athletic, muscular)</SelectItem>
-                    <SelectItem value="endomorph">Endomorph (Curvy, slower metabolism)</SelectItem>
-                  </SelectContent>
-                </Select>
-                {errors.body_type && (
-                  <p className="text-sm text-destructive">{errors.body_type.message}</p>
-                )}
-              </div>
-
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="terms"
-                  checked={watchTerms}
+                  checked={watchTerms || false}
                   onCheckedChange={(checked) => setValue('terms', checked)}
                 />
                 <Label
