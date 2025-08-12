@@ -80,8 +80,9 @@ db.init_app(app)
 # Initialize database tables
 with app.app_context():
     try:
-        # Test database connection first
-        db.engine.execute('SELECT 1')
+        # Test database connection first (SQLAlchemy 2.0 compatible)
+        with db.engine.connect() as connection:
+            connection.execute(db.text('SELECT 1'))
         db.create_all()
         print("Database tables created successfully")
     except Exception as e:
