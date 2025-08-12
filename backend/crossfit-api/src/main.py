@@ -82,11 +82,22 @@ with app.app_context():
     try:
         # Test database connection first (SQLAlchemy 2.0 compatible)
         with db.engine.connect() as connection:
-            connection.execute(db.text('SELECT 1'))
+            result = connection.execute(db.text('SELECT 1'))
+            print("✅ Database connection successful")
+        
+        # Create all tables
         db.create_all()
-        print("Database tables created successfully")
+        print("✅ Database tables created successfully")
+        
+        # Verify tables exist
+        with db.engine.connect() as connection:
+            result = connection.execute(db.text("SELECT name FROM sqlite_master WHERE type='table'" if 'sqlite' in app.config['SQLALCHEMY_DATABASE_URI'] else "SELECT tablename FROM pg_tables WHERE schemaname='public'"))
+            tables = [row[0] for row in result]
+            print(f"✅ Tables created: {', '.join(tables)}")
+            
     except Exception as e:
-        print(f"Error creating database tables: {e}")
+        print(f"❌ Database error: {e}")
+        print(f"Database URL: {app.config['SQLALCHEMY_DATABASE_URI'][:50]}...")
         # Don't fail the app startup if database creation fails
         pass
 
