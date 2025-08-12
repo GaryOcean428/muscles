@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "provider": "python",
+  "packages": {
+    "python": "3.11"
+  },
+  "buildAptPackages": [
+    "libpq-dev",
+    "build-essential",
+    "curl",
+    "git"
+  ],
+  "steps": {
+    "install": {
+      "commands": [
+        "pip install --upgrade pip",
+        "pip install -r requirements.txt"
+      ],
+      "caches": ["pip-cache"]
+    },
+    "setup": {
+      "inputs": [{ "step": "install" }],
+      "commands": [
+        "python -c \"import src.database; src.database.init_db()\"",
+        "python src/seed_data.py"
+      ]
+    }
+  },
+  "caches": {
+    "pip-cache": {
+      "directory": "/root/.cache/pip",
+      "type": "shared"
+    }
+  },
+  "deploy": {
+    "base": {
+      "image": "ghcr.io/railwayapp/railpack-runtime:latest"
+    },
+    "aptPackages": ["libpq5"],
+    "startCommand": "python src/main.py",
+    "variables": {
+      "PYTHONUNBUFFERED": "1",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "FLASK_ENV": "production"
+    },
+    "inputs": [
+      {
+        "step": "setup",
+        "include": ["."]
+      }
+    ]
+  }
+}
+
