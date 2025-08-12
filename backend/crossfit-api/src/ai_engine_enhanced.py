@@ -1,8 +1,9 @@
-import openai
 import json
 import random
+import os
 from datetime import datetime
 from typing import Dict, List, Optional
+from groq import Groq
 from .models.workout import Exercise, Workout
 from .models.user import User
 from .models.profile import UserProfile
@@ -32,8 +33,10 @@ class EnhancedAIWorkoutEngine:
     """
     
     def __init__(self):
-        from groq import Groq
-        self.client = Groq(api_key=os.environ.get('GROQ_API_KEY'))
+        self.groq_api_key = os.environ.get('GROQ_API_KEY')
+        if not self.groq_api_key:
+            raise ValueError("GROQ_API_KEY environment variable is required")
+        self.client = Groq(api_key=self.groq_api_key)
         self.model = "openai/gpt-oss-20b"  # Using OpenAI GPT-OSS-20B via Groq
         
     def generate_workout(self, user_profile: UserProfile, preferences: Dict) -> Dict:
