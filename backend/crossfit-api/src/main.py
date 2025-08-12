@@ -41,12 +41,33 @@ app.register_blueprint(calendar_bp, url_prefix='/api/calendar')
 app.register_blueprint(payment_bp, url_prefix='/api/payment')
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
+database_url = os.environ.get('DATABASE_URL')
+if database_url:
+    # Railway PostgreSQL connection
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+else:
+    # Fallback to SQLite for local development
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'pool_pre_ping': True,
+    'pool_recycle': 300,
+    'pool_timeout': 20,
+    'max_overflow': 0
+}
+
 db.init_app(app)
 
+# Initialize database tables
 with app.app_context():
-    db.create_all()
+    try:
+        db.create_all()
+        print("Database tables created successfully")
+    except Exception as e:
+        print(f"Error creating database tables: {e}")
+        # Don't fail the app startup if database creation fails
+        pass
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -73,4 +94,5 @@ def internal_error(error):
     return {'error': 'Internal server error'}, 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)

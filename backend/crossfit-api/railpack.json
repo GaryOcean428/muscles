@@ -21,8 +21,8 @@
     "setup": {
       "inputs": [{ "step": "install" }],
       "commands": [
-        "python -c \"import src.database; src.database.init_db()\"",
-        "python src/seed_data.py"
+        "mkdir -p src/database",
+        "echo 'Database directory created'"
       ]
     }
   },
@@ -37,11 +37,12 @@
       "image": "ghcr.io/railwayapp/railpack-runtime:latest"
     },
     "aptPackages": ["libpq5"],
-    "startCommand": "python src/main.py",
+    "startCommand": "gunicorn --bind 0.0.0.0:$PORT --workers 4 --timeout 120 src.main:app",
     "variables": {
       "PYTHONUNBUFFERED": "1",
       "PYTHONDONTWRITEBYTECODE": "1",
-      "FLASK_ENV": "production"
+      "FLASK_ENV": "production",
+      "PORT": "5000"
     },
     "inputs": [
       {
