@@ -1,8 +1,11 @@
 from flask import Blueprint, request, jsonify
+from werkzeug.security import generate_password_hash, check_password_hash
+import jwt
 from src.models.user import User, db
 from src.models.profile import UserProfile
-from datetime import datetime
+from datetime import datetime, timedelta
 import re
+import os
 
 auth_bp = Blueprint('auth', __name__)
 
