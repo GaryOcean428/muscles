@@ -79,12 +79,39 @@ Muscles is a comprehensive fitness application designed specifically for CrossFi
 - Node.js 18+ (for local development)
 - Python 3.11+ (for local development)
 
-### Using Docker (Recommended)
+### Railway Deployment with Railpack (Recommended)
+
+This application is configured for Railway deployment using Railpack for optimized builds and deployments.
+
+1. **Deploy to Railway**
+   ```bash
+   # Install Railpack CLI
+   npm install -g @railway/railpack-cli
+   
+   # Validate configuration
+   railpack validate
+   
+   # Deploy to production
+   railpack deploy --config railpack.production.json
+   ```
+
+2. **Development deployment**
+   ```bash
+   railpack dev --config railpack.development.json
+   ```
+
+3. **Migration from legacy Railway configs**
+   ```bash
+   # Run the migration script to convert from old configurations
+   ./migrate-to-railpack.sh
+   ```
+
+### Using Docker (Local Development)
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-org/muscles-app.git
-   cd muscles-app
+   git clone https://github.com/GaryOcean428/muscles.git
+   cd muscles
    ```
 
 2. **Set up environment variables**
@@ -101,7 +128,7 @@ Muscles is a comprehensive fitness application designed specifically for CrossFi
 4. **Access the application**
    - Web App: http://localhost:3000
    - API: http://localhost:8000
-   - API Documentation: http://localhost:8000/docs
+   - API Documentation: http://localhost:8000/api/health
 
 ### Local Development
 
@@ -109,7 +136,7 @@ Muscles is a comprehensive fitness application designed specifically for CrossFi
 
 1. **Navigate to backend directory**
    ```bash
-   cd backend/muscles-api
+   cd backend/crossfit-api
    ```
 
 2. **Create virtual environment**
@@ -141,12 +168,17 @@ Muscles is a comprehensive fitness application designed specifically for CrossFi
 
 1. **Navigate to frontend directory**
    ```bash
-   cd frontend/muscles-web
+   cd frontend/crossfit-web
    ```
 
 2. **Install dependencies**
    ```bash
-   npm install
+   pnpm install
+   ```
+
+3. **Start development server**
+   ```bash
+   pnpm dev
    ```
 
 3. **Start development server**
