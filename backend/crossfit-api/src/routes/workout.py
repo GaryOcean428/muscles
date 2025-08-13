@@ -143,8 +143,8 @@ def generate_basic_workout(user, profile, workout_type, duration, focus_areas):
     
     if workout_type == 'hiit':
         exercises = generate_hiit_exercises(profile, duration, focus_areas)
-    elif workout_type == 'crossfit':
-        exercises = generate_crossfit_exercises(profile, duration, focus_areas)
+    elif workout_type == 'crossfit-style':
+        exercises = generate_crossfit_style_exercises(profile, duration, focus_areas)
     elif workout_type == 'strength':
         exercises = generate_strength_exercises(profile, duration, focus_areas)
     else:
@@ -202,11 +202,11 @@ def generate_hiit_exercises(profile, duration, focus_areas):
     
     return selected_exercises
 
-def generate_crossfit_exercises(profile, duration, focus_areas):
-    """Generate CrossFit exercises"""
+def generate_crossfit_style_exercises(profile, duration, focus_areas):
+    """Generate CrossFit-style exercises"""
     exercises = []
     
-    crossfit_exercises = [
+    crossfit_style_exercises = [
         {'name': 'Thrusters', 'type': 'strength', 'sets': 5, 'reps': '10', 'rest_time': 90, 'equipment': 'barbell'},
         {'name': 'Pull-ups', 'type': 'strength', 'sets': 5, 'reps': '8', 'rest_time': 90, 'equipment': 'pull-up bar'},
         {'name': 'Box Jumps', 'type': 'plyometric', 'sets': 4, 'reps': '12', 'rest_time': 60, 'equipment': 'box'},
@@ -219,18 +219,18 @@ def generate_crossfit_exercises(profile, duration, focus_areas):
     
     # Adjust for fitness level
     if profile.fitness_level == 'beginner':
-        for exercise in crossfit_exercises:
+        for exercise in crossfit_style_exercises:
             exercise['sets'] = max(3, exercise['sets'] - 1)
             if isinstance(exercise['reps'], str) and exercise['reps'].isdigit():
                 exercise['reps'] = str(max(5, int(exercise['reps']) - 2))
     elif profile.fitness_level == 'advanced':
-        for exercise in crossfit_exercises:
+        for exercise in crossfit_style_exercises:
             exercise['sets'] = exercise['sets'] + 1
             if isinstance(exercise['reps'], str) and exercise['reps'].isdigit():
                 exercise['reps'] = str(int(exercise['reps']) + 3)
     
-    num_exercises = min(duration // 6, len(crossfit_exercises))
-    selected_exercises = random.sample(crossfit_exercises, num_exercises)
+    num_exercises = min(duration // 6, len(crossfit_style_exercises))
+    selected_exercises = random.sample(crossfit_style_exercises, num_exercises)
     
     return selected_exercises
 

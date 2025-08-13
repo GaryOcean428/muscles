@@ -150,7 +150,7 @@ const GenerateWorkoutPage = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="hiit">HIIT - High Intensity Interval Training</SelectItem>
-                <SelectItem value="crossfit">CrossFit - Functional Fitness</SelectItem>
+                <SelectItem value="crossfit-style">CrossFit-Style - Functional Fitness</SelectItem>
                 <SelectItem value="strength">Strength Training</SelectItem>
                 <SelectItem value="cardio">Cardio Focused</SelectItem>
               </SelectContent>
