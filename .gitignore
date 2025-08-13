@@ -34,6 +34,7 @@ env/
 ENV/
 env.bak/
 venv.bak/
+test_env/
 
 # Environment variables
 .env
