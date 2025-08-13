@@ -1,7 +1,7 @@
 {
-  "name": "FitForge - AI-Powered CrossFit & HIIT Workouts",
-  "short_name": "FitForge",
-  "description": "Transform your fitness journey with AI-generated CrossFit and HIIT workouts tailored to your goals, equipment, and fitness level.",
+  "name": "Muscles - AI-Powered CrossFit-Inspired & HIIT Workouts",
+  "short_name": "Muscles",
+  "description": "Transform your fitness journey with AI-generated CrossFit-Inspired and HIIT workouts tailored to your goals, equipment, and fitness level.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1e40af",
@@ -39,7 +39,7 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "FitForge Home Screen"
+      "label": "Muscles Home Screen"
     },
     {
       "src": "/screenshots/mobile-workout.png",
@@ -78,8 +78,8 @@
   "related_applications": [
     {
       "platform": "play",
-      "url": "https://play.google.com/store/apps/details?id=com.fitforge.app",
-      "id": "com.fitforge.app"
+      "url": "https://play.google.com/store/apps/details?id=com.muscles.app",
+      "id": "com.muscles.app"
     }
   ],
   "prefer_related_applications": false

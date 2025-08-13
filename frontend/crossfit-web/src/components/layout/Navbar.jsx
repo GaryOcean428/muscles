@@ -88,7 +88,7 @@ const Navbar = () => {
         <Link to="/" className="flex items-center space-x-2">
           <img 
             src="/logo-horizontal.png" 
-            alt="FitForge" 
+            alt="Muscles" 
             className="h-8 w-auto"
           />
         </Link>
