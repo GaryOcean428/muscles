@@ -71,7 +71,7 @@ const WorkoutsScreen = () => {
     switch (type?.toLowerCase()) {
       case 'hiit':
         return '#f97316';
-      case 'crossfit':
+      case 'crossfit-style':
         return '#8b5cf6';
       case 'strength':
         return '#3b82f6';
@@ -147,7 +147,7 @@ const WorkoutsScreen = () => {
   const filterTypes = [
     {label: 'All Types', value: 'all'},
     {label: 'HIIT', value: 'hiit'},
-    {label: 'CrossFit', value: 'crossfit'},
+    {label: 'CrossFit-Style', value: 'crossfit-style'},
     {label: 'Strength', value: 'strength'},
     {label: 'Cardio', value: 'cardio'},
   ];

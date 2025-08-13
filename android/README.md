@@ -1,1 +1,1 @@
-# CrossFit HIIT Android App
+# Muscles - CrossFit-Inspired HIIT Android App
