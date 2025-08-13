@@ -1,7 +1,11 @@
 from flask import Blueprint, request, jsonify
+from werkzeug.security import generate_password_hash, check_password_hash
+import jwt
 from src.models.user import User, db
-from datetime import datetime
+from src.models.profile import UserProfile
+from datetime import datetime, timedelta
 import re
+import os
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -59,6 +63,16 @@ def register():
         user.set_password(password)
         
         db.session.add(user)
+        db.session.flush()  # Get user ID
+        
+        # Create user profile with fitness_level if provided
+        fitness_level = data.get('fitness_level', 'beginner')
+        profile = UserProfile(
+            user_id=user.id,
+            fitness_level=fitness_level
+        )
+        
+        db.session.add(profile)
         db.session.commit()
         
         # Generate token

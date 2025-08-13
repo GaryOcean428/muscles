@@ -1,7 +1,7 @@
-import openai
 import json
 import os
 from typing import Dict, List, Any
+from groq import Groq
 from src.models.profile import UserProfile
 from src.models.workout import Workout, WorkoutExercise
 from src.models.session import WorkoutSession, ExercisePerformance
@@ -10,10 +10,11 @@ from datetime import datetime, timedelta
 
 class AIWorkoutGenerator:
     def __init__(self):
-        # Use the pre-configured OpenAI API key
-        openai.api_key = os.environ.get('OPENAI_API_KEY')
-        if not openai.api_key:
-            raise ValueError("OpenAI API key not found in environment variables")
+        # Use Groq API key for GPT-OSS-20B model
+        self.groq_api_key = os.environ.get('GROQ_API_KEY')
+        if not self.groq_api_key:
+            raise ValueError("GROQ_API_KEY environment variable is required")
+        self.client = Groq(api_key=self.groq_api_key)
     
     def generate_personalized_workout(self, user, profile: UserProfile, workout_type: str, 
                                     duration: int, focus_areas: List[str] = None,
@@ -169,25 +170,26 @@ Generate the workout now:
         return prompt
     
     def _call_openai_api(self, prompt: str) -> str:
-        """Call OpenAI API to generate workout"""
+        """Call Groq API with OpenAI GPT-OSS-20B to generate workout"""
         try:
-            from openai import OpenAI
-            client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
-            
-            response = client.chat.completions.create(
-                model="gpt-4",
+            completion = self.client.chat.completions.create(
+                model="openai/gpt-oss-20b",
                 messages=[
                     {"role": "system", "content": "You are an expert fitness trainer who creates personalized workout plans. Always respond with valid JSON."},
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=2000,
-                temperature=0.7
+                max_completion_tokens=8192,
+                temperature=0.7,
+                top_p=1,
+                reasoning_effort="medium",
+                stream=False,
+                stop=None
             )
             
-            return response.choices[0].message.content.strip()
+            return completion.choices[0].message.content.strip()
             
         except Exception as e:
-            print(f"OpenAI API error: {e}")
+            print(f"Groq API error: {e}")
             # Fallback to basic workout generation
             return self._generate_fallback_workout()
     

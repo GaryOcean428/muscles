@@ -1,0 +1,87 @@
+{
+  "name": "FitForge - AI-Powered CrossFit & HIIT Workouts",
+  "short_name": "FitForge",
+  "description": "Transform your fitness journey with AI-generated CrossFit and HIIT workouts tailored to your goals, equipment, and fitness level.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e40af",
+  "theme_color": "#1e40af",
+  "orientation": "portrait-primary",
+  "categories": ["health", "fitness", "sports"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/favicon-16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-square.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "FitForge Home Screen"
+    },
+    {
+      "src": "/screenshots/mobile-workout.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "AI Workout Generator"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Generate Workout",
+      "short_name": "Generate",
+      "description": "Create a new AI-powered workout",
+      "url": "/generate",
+      "icons": [
+        {
+          "src": "/icon-512.png",
+          "sizes": "512x512"
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "View your fitness progress",
+      "url": "/dashboard",
+      "icons": [
+        {
+          "src": "/icon-512.png",
+          "sizes": "512x512"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.fitforge.app",
+      "id": "com.fitforge.app"
+    }
+  ],
+  "prefer_related_applications": false
+}
+

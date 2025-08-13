@@ -2,7 +2,8 @@
   "$schema": "https://schema.railpack.com",
   "provider": "python",
   "packages": {
-    "python": "3.11"
+    "python": "3.11",
+    "node": "20"
   },
   "buildAptPackages": [
     "libpq-dev",
@@ -11,24 +12,54 @@
     "git"
   ],
   "steps": {
-    "install": {
+    "install-python": {
       "commands": [
         "pip install --upgrade pip",
         "pip install -r requirements.txt"
       ],
       "caches": ["pip-cache"]
     },
+    "install-frontend": {
+      "commands": [
+        "cd ../../frontend/crossfit-web",
+        "npm install -g pnpm",
+        "pnpm install --frozen-lockfile"
+      ],
+      "caches": ["pnpm-cache", "node-modules-cache"]
+    },
+    "build-frontend": {
+      "inputs": [{ "step": "install-frontend" }],
+      "commands": [
+        "cd ../../frontend/crossfit-web",
+        "pnpm run build"
+      ],
+      "caches": ["vite-cache"]
+    },
     "setup": {
-      "inputs": [{ "step": "install" }],
+      "inputs": [{ "step": "install-python" }, { "step": "build-frontend" }],
       "commands": [
         "mkdir -p src/database",
-        "echo 'Database directory created'"
+        "mkdir -p src/static",
+        "cp -r ../../frontend/crossfit-web/dist/* src/static/ || echo 'Frontend build not found, continuing...'",
+        "echo 'Setup completed'"
       ]
     }
   },
   "caches": {
     "pip-cache": {
       "directory": "/root/.cache/pip",
+      "type": "shared"
+    },
+    "pnpm-cache": {
+      "directory": "/root/.local/share/pnpm/store",
+      "type": "shared"
+    },
+    "node-modules-cache": {
+      "directory": "../../frontend/crossfit-web/node_modules/.cache",
+      "type": "shared"
+    },
+    "vite-cache": {
+      "directory": "../../frontend/crossfit-web/.vite/cache",
       "type": "shared"
     }
   },
