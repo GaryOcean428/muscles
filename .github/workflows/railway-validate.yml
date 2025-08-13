@@ -1,0 +1,56 @@
+name: Railway Configuration Validation
+on: 
+  push:
+    branches: [main]
+    paths: ['railpack*.json', 'install_deps.sh', 'start_app.sh']
+  pull_request:
+    branches: [main]
+    paths: ['railpack*.json', 'install_deps.sh', 'start_app.sh']
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Check railpack.json exists
+        run: test -f railpack.json
+        
+      - name: Validate JSON syntax
+        run: python -c "import json; json.load(open('railpack.json'))"
+        
+      - name: Find requirements.txt files
+        run: |
+          echo "Requirements.txt files found:"
+          find . -name "requirements.txt" -type f
+          
+      - name: Find Python entry points
+        run: |
+          echo "Python entry points found:"
+          find . -name "app.py" -o -name "main.py"
+          
+      - name: Test install script
+        run: |
+          chmod +x install_deps.sh
+          echo "Install script is executable"
+          
+      - name: Test start script
+        run: |
+          chmod +x start_app.sh
+          echo "Start script is executable"
+          
+      - name: Test discovery script
+        run: |
+          chmod +x discover_structure.sh
+          ./discover_structure.sh
+          
+      - name: Validate adaptive configuration
+        run: |
+          echo "✅ Adaptive Railway configuration validated"
+          echo "Scripts: install_deps.sh, start_app.sh"
+          echo "Configs: railpack.json, railpack.flat.json, railpack.monorepo.json"

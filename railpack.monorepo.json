@@ -4,22 +4,16 @@
   "packages": {
     "python": "3.11"
   },
-  "ignore": [
-    "frontend/",
-    "android/",
-    "node_modules/",
-    "*.md",
-    ".git/"
-  ],
   "steps": {
     "install": {
       "commands": [
-        "./install_deps.sh"
+        "pip install --upgrade pip",
+        "cd backend && pip install -r requirements.txt"
       ]
     }
   },
   "deploy": {
-    "startCommand": "./start_app.sh",
+    "startCommand": "cd backend && gunicorn app:app --bind 0.0.0.0:${PORT:-8000} --workers 4",
     "aptPackages": ["libpq5", "python3-dev"]
   }
 }
