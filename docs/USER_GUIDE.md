@@ -1,8 +1,8 @@
-# FitForge - CrossFit/HIIT Workout Application User Guide
+# Muscles - CrossFit-Inspired/HIIT Workout Application User Guide
 
-## Welcome to FitForge
+## Welcome to Muscles
 
-FitForge is your comprehensive fitness companion designed specifically for CrossFit and High-Intensity Interval Training (HIIT) enthusiasts. Whether you're a beginner starting your fitness journey or an experienced athlete looking to optimize your training, FitForge provides AI-powered workout generation, progress tracking, and seamless calendar integration.
+Muscles is your comprehensive fitness companion designed specifically for CrossFit-Inspired and High-Intensity Interval Training (HIIT) enthusiasts. Whether you're a beginner starting your fitness journey or an experienced athlete looking to optimize your training, Muscles provides AI-powered workout generation, progress tracking, and seamless calendar integration.
 
 ## Table of Contents
 

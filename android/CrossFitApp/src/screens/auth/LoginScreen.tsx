@@ -51,7 +51,7 @@ const LoginScreen = () => {
           </View>
           <Text style={styles.title}>Welcome Back</Text>
           <Text style={styles.subtitle}>
-            Sign in to your FitForge account to continue your fitness journey
+            Sign in to your Muscles account to continue your fitness journey
           </Text>
         </View>
 
@@ -116,7 +116,7 @@ const LoginScreen = () => {
 
         <View style={styles.demoContainer}>
           <Text style={styles.demoTitle}>Demo Credentials (for testing):</Text>
-          <Text style={styles.demoText}>Email: demo@fitforge.com</Text>
+          <Text style={styles.demoText}>Email: demo@muscles.com</Text>
           <Text style={styles.demoText}>Password: demo123</Text>
         </View>
       </ScrollView>
