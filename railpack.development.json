@@ -1,0 +1,18 @@
+{
+  "extends": "./railpack.json",
+  "services": [
+    {
+      "id": "main",
+      "env": {
+        "NODE_ENV": "development",
+        "LOG_LEVEL": "debug",
+        "WORKERS": "1",
+        "FLASK_ENV": "development"
+      },
+      "scaling": {
+        "minInstances": 1,
+        "maxInstances": 1
+      }
+    }
+  ]
+}
