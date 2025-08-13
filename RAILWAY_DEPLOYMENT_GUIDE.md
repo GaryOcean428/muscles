@@ -25,15 +25,31 @@ git push origin main  # Triggers automatic deployment
     "frontend/",
     "android/", 
     "node_modules/",
-    "*.md",
     ".git/"
   ],
   "steps": {
     "install": {
-      "commands": ["./install_deps.sh"]
+      "inputs": [
+        {
+          "local": true,
+          "include": ["."]
+        }
+      ],
+      "commands": [
+        { "cmd": "chmod +x install_deps.sh", "customName": "Make install script executable" },
+        { "cmd": "./install_deps.sh", "customName": "Install Python dependencies" }
+      ]
     }
   },
   "deploy": {
+    "inputs": [
+      {
+        "step": "install"
+      }
+    ],
+    "commands": [
+      { "cmd": "chmod +x start_app.sh", "customName": "Make start script executable" }
+    ],
     "startCommand": "./start_app.sh",
     "aptPackages": ["libpq5", "python3-dev"]
   }
