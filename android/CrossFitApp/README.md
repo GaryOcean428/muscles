@@ -1,6 +1,6 @@
-# CrossFit App - React Native Android Application
+# Muscles App - React Native Android Application
 
-A comprehensive CrossFit and HIIT workout application built with React Native for Android, featuring AI-powered workout generation, progress tracking, and personalized fitness plans.
+A comprehensive CrossFit-Inspired and HIIT workout application built with React Native for Android, featuring AI-powered workout generation, progress tracking, and personalized fitness plans.
 
 ## Features
 

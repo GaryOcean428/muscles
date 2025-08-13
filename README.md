@@ -1,8 +1,8 @@
-# FitForge - CrossFit/HIIT Workout Application
+# Muscles - CrossFit-Inspired/HIIT Workout Application
 
-![FitForge Logo](docs/images/logo.png)
+![Muscles Logo](docs/images/logo.png)
 
-FitForge is a comprehensive fitness application designed specifically for CrossFit and High-Intensity Interval Training (HIIT) enthusiasts. Built with modern technologies, it provides AI-powered workout generation, progress tracking, calendar integration, and subscription management.
+Muscles is a comprehensive fitness application designed specifically for CrossFit-Inspired and High-Intensity Interval Training (HIIT) enthusiasts. Built with modern technologies, it provides AI-powered workout generation, progress tracking, calendar integration, and subscription management.
 
 ## 🚀 Features
 
@@ -83,8 +83,8 @@ FitForge is a comprehensive fitness application designed specifically for CrossF
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-org/fitforge-app.git
-   cd fitforge-app
+   git clone https://github.com/your-org/muscles-app.git
+   cd muscles-app
    ```
 
 2. **Set up environment variables**
@@ -109,7 +109,7 @@ FitForge is a comprehensive fitness application designed specifically for CrossF
 
 1. **Navigate to backend directory**
    ```bash
-   cd backend/crossfit-api
+   cd backend/muscles-api
    ```
 
 2. **Create virtual environment**
@@ -126,7 +126,7 @@ FitForge is a comprehensive fitness application designed specifically for CrossF
 4. **Set up database**
    ```bash
    # Install PostgreSQL and create database
-   createdb fitforge_dev
+   createdb muscles_dev
    
    # Run migrations
    python src/seed_data.py
@@ -141,7 +141,7 @@ FitForge is a comprehensive fitness application designed specifically for CrossF
 
 1. **Navigate to frontend directory**
    ```bash
-   cd frontend/crossfit-web
+   cd frontend/muscles-web
    ```
 
 2. **Install dependencies**
@@ -158,7 +158,7 @@ FitForge is a comprehensive fitness application designed specifically for CrossF
 
 1. **Navigate to mobile directory**
    ```bash
-   cd android/CrossFitApp
+   cd android/MusclesApp
    ```
 
 2. **Install dependencies**
@@ -188,14 +188,14 @@ FitForge is a comprehensive fitness application designed specifically for CrossF
 
 ### Backend Tests
 ```bash
-cd backend/crossfit-api
+cd backend/muscles-api
 source venv/bin/activate
 pytest tests/ -v --cov=src
 ```
 
 ### Frontend Tests
 ```bash
-cd frontend/crossfit-web
+cd frontend/muscles-web
 npm test
 ```
 
@@ -205,7 +205,7 @@ npm test
 docker-compose up -d
 
 # Run E2E tests
-cd backend/crossfit-api
+cd backend/muscles-api
 pytest tests/e2e/ -v
 ```
 
@@ -248,7 +248,7 @@ Key environment variables (see `.env.example` for complete list):
 
 ```bash
 # Database
-DATABASE_URL=postgresql://user:password@localhost/fitforge
+DATABASE_URL=postgresql://user:password@localhost/muscles
 
 # API Keys
 OPENAI_API_KEY=sk-your-openai-key
@@ -355,11 +355,11 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 - **Documentation**: Check the docs folder for detailed guides
 - **Issues**: Report bugs and request features on GitHub Issues
 - **Discussions**: Join community discussions on GitHub Discussions
-- **Email**: Contact support@fitforge.com for urgent issues
+- **Email**: Contact support@muscles.com for urgent issues
 
 ### FAQ
 
-**Q: Can I use FitForge without an internet connection?**
+**Q: Can I use Muscles without an internet connection?**
 A: The mobile app supports offline workout tracking. You can download workouts and log exercises offline, then sync when connected.
 
 **Q: Is my data secure?**
@@ -381,14 +381,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **Website**: https://fitforge.com
-- **Email**: hello@fitforge.com
-- **Twitter**: [@FitForgeApp](https://twitter.com/FitForgeApp)
-- **LinkedIn**: [FitForge](https://linkedin.com/company/fitforge)
+- **Website**: https://muscles.com
+- **Email**: hello@muscles.com
+- **Twitter**: [@MusclesApp](https://twitter.com/MusclesApp)
+- **LinkedIn**: [Muscles](https://linkedin.com/company/muscles)
 
 ---
 
-**Built with ❤️ by the FitForge Team**
+**Built with ❤️ by the Muscles Team**
 
-*Forge your fitness future with AI-powered workouts*
+*Build your strength with AI-powered workouts*
 

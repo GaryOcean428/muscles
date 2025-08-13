@@ -1,13 +1,13 @@
-# CrossFit/HIIT Workout Application
+# Muscles - CrossFit-Inspired/HIIT Workout Application
 
 ## Project Overview
 
-This is a comprehensive CrossFit/HIIT workout application that provides personalized workout plans, calendar integration, and progress tracking across web and mobile platforms.
+This is a comprehensive CrossFit-Inspired/HIIT workout application that provides personalized workout plans, calendar integration, and progress tracking across web and mobile platforms.
 
 ## Architecture
 
 ### Backend (Flask API)
-- **Location**: `/backend/crossfit-api/`
+- **Location**: `/backend/muscles-api/`
 - **Technology**: Flask with SQLite database
 - **Features**: 
   - User authentication and profile management
@@ -17,7 +17,7 @@ This is a comprehensive CrossFit/HIIT workout application that provides personal
   - Payment processing with Stripe
 
 ### Web Frontend (React)
-- **Location**: `/frontend/crossfit-web/`
+- **Location**: `/frontend/muscles-web/`
 - **Technology**: React with Vite, Tailwind CSS, shadcn/ui
 - **Features**:
   - Responsive web interface

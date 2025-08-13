@@ -1,8 +1,8 @@
-# CrossFit/HIIT Workout Application - API Documentation
+# Muscles - CrossFit-Inspired/HIIT Workout Application - API Documentation
 
 ## Overview
 
-The CrossFit/HIIT Workout Application API provides a comprehensive backend service for managing users, workouts, sessions, payments, and calendar integrations. This RESTful API is built with Flask and supports JWT authentication.
+The Muscles CrossFit-Inspired/HIIT Workout Application API provides a comprehensive backend service for managing users, workouts, sessions, payments, and calendar integrations. This RESTful API is built with Flask and supports JWT authentication.
 
 **Base URL:** `http://localhost:5000/api`
 
