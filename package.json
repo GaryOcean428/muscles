@@ -20,9 +20,6 @@
     "dev:frontend": "cd frontend/crossfit-web && pnpm dev",
     "dev:backend": "cd backend/crossfit-api && python src/main.py"
   },
-  "devDependencies": {
-    "@railway/railpack-cli": "latest"
-  },
   "engines": {
     "node": ">=20",
     "python": ">=3.11"
