@@ -178,12 +178,11 @@ Generate the workout now:
                     {"role": "system", "content": "You are an expert fitness trainer who creates personalized workout plans. Always respond with valid JSON."},
                     {"role": "user", "content": prompt}
                 ],
-                max_completion_tokens=8192,
+                # Groq Python client follows OpenAI-style chat.completions fields
+                max_tokens=2048,
                 temperature=0.7,
                 top_p=1,
-                reasoning_effort="medium",
-                stream=False,
-                stop=None
+                stream=False
             )
             
             return completion.choices[0].message.content.strip()
