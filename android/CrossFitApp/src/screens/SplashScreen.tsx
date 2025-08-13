@@ -31,7 +31,7 @@ const SplashScreen = () => {
         <View style={styles.logo}>
           <Text style={styles.logoText}>💪</Text>
         </View>
-        <Text style={styles.appName}>FitForge</Text>
+        <Text style={styles.appName}>Muscles</Text>
         <Text style={styles.tagline}>AI-Powered Fitness</Text>
       </View>
       
