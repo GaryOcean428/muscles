@@ -199,6 +199,10 @@ celerybeat-schedule
 
 # Docker
 .dockerignore
+# Prevent root-level Dockerfiles that conflict with railpack.json
+Dockerfile
+Dockerfile.python
+Dockerfile.fallback
 
 # Uploads
 uploads/
