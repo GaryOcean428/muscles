@@ -17,7 +17,7 @@ The current `railpack.json` follows the correct schema:
     "install": {
       "commands": [
         "pip install --upgrade pip",
-        "if [ -f backend/crossfit-api/requirements.txt ]; then pip install -r backend/crossfit-api/requirements.txt; elif [ -f requirements.txt ]; then pip install -r requirements.txt; else echo 'ERROR: No requirements.txt found'; exit 1; fi"
+        "if [ -f backend/crossfit-api/requirements.txt ]; then pip install -r backend/crossfit-api/requirements.txt; elif [ -f requirements.txt ]; then pip install -r requirements.txt; else echo ERROR: No requirements.txt found; exit 1; fi"
       ]
     }
   },
