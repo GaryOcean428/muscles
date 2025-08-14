@@ -19,11 +19,6 @@
     }
   },
   "deploy": {
-    "inputs": [
-      {
-        "step": "install"
-      }
-    ],
     "startCommand": "cd backend/crossfit-api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-8000} --workers 4",
     "aptPackages": ["libpq5", "python3-dev"]
   }
