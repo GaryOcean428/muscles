@@ -12,14 +12,28 @@
   ],
   "steps": {
     "install": {
+      "inputs": [
+        {
+          "local": true,
+          "include": ["."]
+        }
+      ],
       "commands": [
-        "pip install --upgrade pip",
-        "if [ -f backend/crossfit-api/requirements.txt ]; then pip install -r backend/crossfit-api/requirements.txt; elif [ -f requirements.txt ]; then pip install -r requirements.txt; else echo ERROR: No requirements.txt found; exit 1; fi"
+        { "cmd": "chmod +x install_deps.sh", "customName": "Make install script executable" },
+        { "cmd": "./install_deps.sh", "customName": "Install Python dependencies" }
       ]
     }
   },
   "deploy": {
-    "startCommand": "cd backend/crossfit-api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-8000} --workers 4",
+    "inputs": [
+      {
+        "step": "install"
+      }
+    ],
+    "commands": [
+      { "cmd": "chmod +x start_app.sh", "customName": "Make start script executable" }
+    ],
+    "startCommand": "./start_app.sh",
     "aptPackages": ["libpq5", "python3-dev"]
   }
 }
