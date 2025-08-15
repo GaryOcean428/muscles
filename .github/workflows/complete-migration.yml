@@ -1,0 +1,160 @@
+name: Complete Backend Migration
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Complete directory migration
+      run: |
+        echo "📁 Starting directory migration..."
+        
+        # Copy entire backend/crossfit-api to backend/api
+        if [ -d "backend/crossfit-api" ]; then
+          cp -r backend/crossfit-api backend/api
+          echo "✅ Copied backend/crossfit-api to backend/api"
+          
+          # Show what was copied
+          echo "📋 New structure:"
+          ls -la backend/api/src/ || true
+        fi
+        
+        # Also copy frontend if it exists
+        if [ -d "frontend/crossfit-web" ] && [ ! -d "frontend/web" ]; then
+          cp -r frontend/crossfit-web frontend/web
+          echo "✅ Copied frontend/crossfit-web to frontend/web"
+        fi
+        
+        # Also copy android if it exists
+        if [ -d "android/CrossFitApp" ] && [ ! -d "android/MusclesApp" ]; then
+          cp -r android/CrossFitApp android/MusclesApp
+          echo "✅ Copied android/CrossFitApp to android/MusclesApp"
+        fi
+    
+    - name: Update railpack.json for backend/api
+      run: |
+        cat > railpack.json << 'EOF'
+        {
+          "$schema": "https://schema.railpack.com",
+          "provider": "python",
+          "packages": {
+            "python": "3.11"
+          },
+          "ignore": [
+            "frontend/",
+            "android/",
+            "node_modules/",
+            ".git/",
+            "*.pyc",
+            "__pycache__/",
+            ".pytest_cache/",
+            ".coverage",
+            "*.log",
+            ".env",
+            ".venv/",
+            "venv/",
+            "docs/",
+            "tests/",
+            "*.md"
+          ],
+          "steps": {
+            "install": {
+              "commands": [
+                "pip install --upgrade pip setuptools wheel",
+                "cd backend/api && pip install --no-cache-dir -r requirements.txt"
+              ],
+              "timeout": 600
+            },
+            "build": {
+              "commands": [
+                "cd backend/api && python -m py_compile src/main.py",
+                "cd backend/api && python -c 'import src.main; print(\"✅ Flask app imports successfully\")'"
+              ],
+              "timeout": 120
+            }
+          },
+          "deploy": {
+            "startCommand": "cd backend/api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-5000} --workers 4 --worker-class sync --timeout 120 --keep-alive 2 --max-requests 1000 --max-requests-jitter 100 --log-level info --access-logfile - --error-logfile -",
+            "healthCheckPath": "/api/health",
+            "healthCheckTimeout": 300,
+            "healthCheckInterval": 30,
+            "healthCheckRetries": 3,
+            "restartPolicyType": "ON_FAILURE",
+            "restartPolicyMaxRetries": 3,
+            "gracefulShutdownTimeout": 30
+          },
+          "environment": {
+            "FLASK_ENV": "production",
+            "PYTHONUNBUFFERED": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONPATH": "/app/backend/api:$PYTHONPATH"
+          },
+          "services": {
+            "postgres": {
+              "required": true,
+              "version": "15"
+            },
+            "redis": {
+              "required": true,
+              "version": "7"
+            }
+          },
+          "monitoring": {
+            "healthCheck": {
+              "enabled": true,
+              "path": "/api/health",
+              "interval": 30,
+              "timeout": 10
+            }
+          }
+        }
+        EOF
+    
+    - name: Update requirements.txt
+      run: |
+        cat > requirements.txt << 'EOF'
+        # Root requirements.txt for Railway deployment
+        # References the actual requirements file in the backend directory
+        
+        -r backend/api/requirements.txt
+        EOF
+    
+    - name: Commit and push changes
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "GitHub Actions Bot"
+        
+        # Add all changes
+        git add -A
+        
+        # Check if there are changes to commit
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Automated: Complete backend migration to backend/api
+        
+        - Copied backend/crossfit-api to backend/api
+        - Updated railpack.json to use new paths
+        - Updated requirements.txt reference
+        - Fixed Railway deployment structure"
+          
+          git push
+        fi
+    
+    - name: Verify migration
+      run: |
+        echo "✅ Verification:"
+        [ -f "backend/api/src/main.py" ] && echo "  ✓ main.py exists" || echo "  ✗ main.py NOT FOUND"
+        [ -f "backend/api/requirements.txt" ] && echo "  ✓ requirements.txt exists" || echo "  ✗ requirements.txt NOT FOUND"
+        [ -d "backend/api/src/routes" ] && echo "  ✓ routes directory exists" || echo "  ✗ routes NOT FOUND"
+        [ -d "backend/api/src/models" ] && echo "  ✓ models directory exists" || echo "  ✗ models NOT FOUND"
