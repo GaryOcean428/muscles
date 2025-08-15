@@ -22,11 +22,11 @@ def run_command(command, cwd=None):
 
 def main():
     """Main build process"""
-    print("🚀 Starting FitForge build process...")
+    print("🚀 Starting Muscles build process...")
     
     # Get project root directory
     project_root = os.path.dirname(os.path.abspath(__file__))
-    frontend_dir = os.path.join(project_root, 'frontend', 'crossfit-web')
+    frontend_dir = os.path.join(project_root, 'frontend', 'web')
     backend_dir = os.path.join(project_root, 'backend', 'api')
     static_dir = os.path.join(backend_dir, 'src', 'static')
     

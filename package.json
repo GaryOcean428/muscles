@@ -1,28 +1,25 @@
 {
   "name": "muscles-monorepo",
   "version": "1.0.0",
-  "description": "CrossFit muscles application - monolithic Flask + React deployment",
+  "description": "Muscles HIIT application - monolithic Flask + React deployment",
   "private": true,
   "workspaces": [
-    "frontend/crossfit-web",
+    "frontend/web",
     "backend/api"
   ],
   "scripts": {
-    "railpack:build": "railpack build",
-    "railpack:dev": "railpack dev --config railpack.development.json",
-    "railpack:deploy": "railpack deploy --config railpack.production.json",
-    "railpack:validate": "railpack validate",
-    "railpack:logs": "railpack logs --follow",
-    "install:frontend": "cd frontend/crossfit-web && pnpm install",
+    "install:frontend": "cd frontend/web && npm install",
     "install:backend": "cd backend/api && pip install -r requirements.txt",
-    "build:frontend": "cd frontend/crossfit-web && pnpm build",
-    "test:backend": "cd backend/api && python -m pytest tests/",
-    "dev:frontend": "cd frontend/crossfit-web && pnpm dev",
-    "dev:backend": "cd backend/api && python src/main.py"
+    "build:frontend": "cd frontend/web && npm run build",
+    "test:backend": "cd backend/api && python -m pytest tests/unit/test_simple.py -v",
+    "lint:frontend": "cd frontend/web && npm run lint",
+    "type-check:backend": "cd backend/api && mypy src/main.py",
+    "dev:frontend": "cd frontend/web && npm run dev",
+    "dev:backend": "cd backend/api && python src/main.py",
+    "validate": "./validate_deployment.sh"
   },
   "engines": {
     "node": ">=20",
     "python": ">=3.11"
-  },
-  "packageManager": "pnpm@10.4.1"
+  }
 }
