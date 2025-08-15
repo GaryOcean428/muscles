@@ -80,7 +80,7 @@ const WorkoutsPage = () => {
           <SelectContent>
             <SelectItem value="all">All Types</SelectItem>
             <SelectItem value="hiit">HIIT</SelectItem>
-            <SelectItem value="crossfit">CrossFit</SelectItem>
+            <SelectItem value="hiit">HIIT</SelectItem>
             <SelectItem value="strength">Strength</SelectItem>
             <SelectItem value="cardio">Cardio</SelectItem>
           </SelectContent>

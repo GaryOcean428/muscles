@@ -17,13 +17,13 @@ The current `railpack.json` follows the correct schema:
     "install": {
       "commands": [
         "pip install --upgrade pip",
-        "if [ -f backend/crossfit-api/requirements.txt ]; then pip install -r backend/crossfit-api/requirements.txt; elif [ -f requirements.txt ]; then pip install -r requirements.txt; else echo ERROR: No requirements.txt found; exit 1; fi"
+        "if [ -f backend/api/requirements.txt ]; then pip install -r backend/api/requirements.txt; elif [ -f requirements.txt ]; then pip install -r requirements.txt; else echo ERROR: No requirements.txt found; exit 1; fi"
       ]
     }
   },
   "deploy": {
     "inputs": [{"step": "install"}],
-    "startCommand": "cd backend/crossfit-api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-8000} --workers 4",
+    "startCommand": "cd backend/api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-8000} --workers 4",
     "aptPackages": ["libpq5", "python3-dev"]
   }
 }

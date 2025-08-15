@@ -22,7 +22,7 @@ from .knowledge_base import (
 class EnhancedAIWorkoutEngine:
     """
     Enhanced AI Workout Engine incorporating research-based insights for 
-    optimizing HIIT and CrossFit programs across body types.
+    optimizing HIIT and HIIT programs across body types.
     
     Based on research findings from:
     - PEER-HEART study on adolescent HIIT adaptations
@@ -143,11 +143,11 @@ class EnhancedAIWorkoutEngine:
     
     def _get_enhanced_system_message(self) -> str:
         """Enhanced system message incorporating latest research findings"""
-        return """You are an elite CrossFit and HIIT trainer with a PhD in Exercise Science and extensive knowledge of the latest research in personalized training methodologies. Your expertise is based on cutting-edge studies including:
+        return """You are an elite HIIT and HIIT trainer with a PhD in Exercise Science and extensive knowledge of the latest research in personalized training methodologies. Your expertise is based on cutting-edge studies including:
 
 RESEARCH-BASED TRAINING PRINCIPLES:
 
-1. SOMATOTYPE-SPECIFIC ADAPTATIONS (Based on Italian CrossFit athlete studies):
+1. SOMATOTYPE-SPECIFIC ADAPTATIONS (Based on Italian HIIT athlete studies):
    - ECTOMORPHS: Respond optimally to plyometric HIIT (HIPT), require extended recovery (1:4 to 1:8 work:rest ratios), focus on joint stability and tendon health, conservative progression rates
    - MESOMORPHS: Excel with traditional HIIT, demonstrate superior cellular health (higher phase angles indicating robust cell membrane integrity), can handle higher intensities with 1:2 to 1:4 work:rest ratios, rapid advancement capability
    - ENDOMORPHS: Benefit from metabolic conditioning focus, respond well to volume-based training with 1:1 to 1:2 work:rest ratios, require active recovery emphasis and carb cycling strategies
@@ -164,7 +164,7 @@ RESEARCH-BASED TRAINING PRINCIPLES:
    - OXIDATIVE (2-15min work, 1-5min rest): Aerobic capacity, endurance training, steady-state cardio
 
 4. INJURY PREVENTION PRIORITIES (Systematic review findings):
-   - HIGH-RISK AREAS: Shoulders, knees, lumbar spine (CrossFit); ankles, knees, lower back (HIIT)
+   - HIGH-RISK AREAS: Shoulders, knees, lumbar spine (HIIT); ankles, knees, lower back (HIIT)
    - HIGH-RISK WORKOUTS: Fran, Murph, Fight Gone Bad, Helen, Filthy 50 require careful scaling for beginners
    - CRITICAL FACTORS: Foundational movement mastery before weighted progressions, competitive involvement increases injury risk significantly
    - BIOMECHANICAL EMPHASIS: Real-time feedback integration, technique over intensity for beginners
@@ -739,7 +739,7 @@ Your workout prescriptions must be evidence-based, safe, and optimized for the i
             "research_citations": {
                 "primary_studies": [
                     "PEER-HEART study on adolescent HIIT adaptations",
-                    "Italian CrossFit athlete somatotype analysis",
+                    "Italian HIIT athlete somatotype analysis",
                     "Meta-analysis of HIIT in older adults",
                     "Combat sports athlete performance research"
                 ],

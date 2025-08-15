@@ -26,13 +26,13 @@ fi
 
 # Check directory structure
 echo -e "\n📁 Checking directory structure..."
-if [ -d "backend/crossfit-api/src" ]; then
+if [ -d "backend/api/src" ]; then
     echo "✅ Backend source directory exists"
 else
     echo "❌ Backend source directory missing"
 fi
 
-if [ -d "frontend/crossfit-web/src" ]; then
+if [ -d "frontend/web/src" ]; then
     echo "✅ Frontend source directory exists"
 else
     echo "❌ Frontend source directory missing"
@@ -46,19 +46,19 @@ fi
 
 # Check key files
 echo -e "\n📄 Checking key application files..."
-if [ -f "backend/crossfit-api/src/main.py" ]; then
+if [ -f "backend/api/src/main.py" ]; then
     echo "✅ Flask main app exists"
 else
     echo "❌ Flask main app missing"
 fi
 
-if [ -f "backend/crossfit-api/requirements.txt" ]; then
+if [ -f "backend/api/requirements.txt" ]; then
     echo "✅ Python requirements exist"
 else
     echo "❌ Python requirements missing"
 fi
 
-if [ -f "frontend/crossfit-web/package.json" ]; then
+if [ -f "frontend/web/package.json" ]; then
     echo "✅ Frontend package.json exists"
 else
     echo "❌ Frontend package.json missing"
@@ -78,7 +78,7 @@ fi
 
 # Test Python imports
 echo -e "\n🐍 Testing Python imports..."
-cd backend/crossfit-api
+cd backend/api
 if python -c "import src.main" 2>/dev/null; then
     echo "✅ Flask app imports successfully"
 else
@@ -88,15 +88,15 @@ cd ../..
 
 # Test frontend build files
 echo -e "\n⚛️  Checking frontend build..."
-if [ -d "frontend/crossfit-web/dist" ]; then
+if [ -d "frontend/web/dist" ]; then
     echo "✅ Frontend build directory exists"
-    if [ -f "frontend/crossfit-web/dist/index.html" ]; then
+    if [ -f "frontend/web/dist/index.html" ]; then
         echo "✅ Frontend build appears complete"
     else
         echo "⚠️  Frontend build may be incomplete"
     fi
 else
-    echo "⚠️  Frontend not built yet - run 'pnpm build' in frontend/crossfit-web"
+    echo "⚠️  Frontend not built yet - run 'pnpm build' in frontend/web"
 fi
 
 echo -e "\n✅ Validation complete! Configuration appears ready for Railpack deployment."

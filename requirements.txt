@@ -1,5 +1,4 @@
 # Root requirements.txt for Railway deployment
-# This file ensures Railway finds dependencies during build process
 # References the actual requirements file in the backend directory
 
--r backend/crossfit-api/requirements.txt
+-r backend/api/requirements.txt

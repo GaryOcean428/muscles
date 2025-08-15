@@ -1,23 +1,25 @@
 {
-  "version": "1",
-  "metadata": {
-    "name": "muscles-backend"
+  "$schema": "https://schema.railpack.com",
+  "provider": "python",
+  "packages": {
+    "python": "3.11"
   },
-  "build": {
-    "provider": "python",
-    "root": "backend/api",
-    "steps": {
-      "install": {
-        "commands": [
-          "cd backend/api",
-          "python -m pip install --upgrade pip",
-          "pip install -r requirements.txt"
-        ]
-      }
+  "ignore": [
+    "frontend/",
+    "android/",
+    "node_modules/",
+    ".git/"
+  ],
+  "steps": {
+    "install": {
+      "commands": [
+        "pip install --upgrade pip",
+        "cd backend/api && pip install -r requirements.txt"
+      ]
     }
   },
   "deploy": {
-    "startCommand": "cd backend/api && gunicorn --chdir . src.main:app --bind 0.0.0.0:${PORT:-5000} --workers 4 --timeout 120 --log-level info",
+    "startCommand": "cd backend/api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-5000} --workers 4 --timeout 120 --log-level info",
     "healthCheckPath": "/api/health",
     "healthCheckTimeout": 300,
     "restartPolicyType": "ON_FAILURE",

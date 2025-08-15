@@ -95,19 +95,19 @@ echo -e "\n${BOLD}📁 Phase 2: Directory Structure${NC}"
 echo "=================================="
 
 # Check critical directories
-if [ -d "backend/crossfit-api" ]; then
+if [ -d "backend/api" ]; then
     check_pass "Backend API directory exists"
 else
     check_fail "Backend API directory missing"
 fi
 
-if [ -d "backend/crossfit-api/src" ]; then
+if [ -d "backend/api/src" ]; then
     check_pass "Backend source directory exists"
 else
     check_fail "Backend source directory missing"
 fi
 
-if [ -d "frontend/crossfit-web" ]; then
+if [ -d "frontend/web" ]; then
     check_pass "Frontend directory exists"
 else
     check_warn "Frontend directory missing (may be intentional for API-only deployment)"
@@ -117,11 +117,11 @@ echo -e "\n${BOLD}📄 Phase 3: Application Files${NC}"
 echo "=================================="
 
 # Check for Flask application
-if [ -f "backend/crossfit-api/src/main.py" ]; then
+if [ -f "backend/api/src/main.py" ]; then
     check_pass "Flask main application exists"
     
     # Check if it contains Flask app
-    if grep -q "app = Flask\|from flask import Flask" "backend/crossfit-api/src/main.py"; then
+    if grep -q "app = Flask\|from flask import Flask" "backend/api/src/main.py"; then
         check_pass "Flask application detected in main.py"
     else
         check_warn "Flask application pattern not detected in main.py"
@@ -131,17 +131,17 @@ else
 fi
 
 # Check for requirements.txt
-if [ -f "backend/crossfit-api/requirements.txt" ]; then
+if [ -f "backend/api/requirements.txt" ]; then
     check_pass "requirements.txt exists"
     
     # Check if it's not empty
-    if [ -s "backend/crossfit-api/requirements.txt" ]; then
+    if [ -s "backend/api/requirements.txt" ]; then
         check_pass "requirements.txt is not empty"
         
         # Check for critical packages
         CRITICAL_PACKAGES=("Flask" "gunicorn" "psycopg2-binary")
         for pkg in "${CRITICAL_PACKAGES[@]}"; do
-            if grep -i "$pkg" "backend/crossfit-api/requirements.txt" >/dev/null 2>&1; then
+            if grep -i "$pkg" "backend/api/requirements.txt" >/dev/null 2>&1; then
                 check_pass "$pkg found in requirements.txt"
             else
                 check_warn "$pkg not explicitly listed in requirements.txt"
@@ -185,9 +185,9 @@ echo "=================================="
 
 # Test if we can find and install dependencies (dry run)
 echo -e "${BLUE}Testing dependency resolution...${NC}"
-if [ -f "backend/crossfit-api/requirements.txt" ]; then
+if [ -f "backend/api/requirements.txt" ]; then
     # Check if packages can be resolved (without installing)
-    if pip install --dry-run -r "backend/crossfit-api/requirements.txt" >/dev/null 2>&1; then
+    if pip install --dry-run -r "backend/api/requirements.txt" >/dev/null 2>&1; then
         check_pass "All dependencies can be resolved"
     else
         check_warn "Some dependencies may have resolution issues"

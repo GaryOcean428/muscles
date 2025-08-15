@@ -13,7 +13,7 @@
 #### **2. React Native App Optimization**
 ```bash
 # Build production-ready React Native app
-cd android/CrossFitApp
+cd android/MusclesApp
 npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle
 
 # Generate signed APK
@@ -40,7 +40,7 @@ npx react-native run-ios --configuration Release
 ### **Phase 2: App Store Requirements**
 
 #### **1. App Metadata & Assets**
-- **App Name**: "FitForge - AI CrossFit & HIIT Trainer"
+- **App Name**: "FitForge - AI HIIT & HIIT Trainer"
 - **Subtitle**: "Personalized Workouts with Sports Science"
 - **Keywords**: "fitness, crossfit, hiit, ai, workout, training, exercise"
 - **Category**: Health & Fitness
@@ -62,7 +62,7 @@ npx react-native run-ios --configuration Release
 
 #### **4. App Description**
 ```markdown
-Transform your fitness journey with FitForge, the AI-powered CrossFit and HIIT training app backed by cutting-edge sports science research.
+Transform your fitness journey with FitForge, the AI-powered HIIT and HIIT training app backed by cutting-edge sports science research.
 
 🧠 AI-POWERED WORKOUTS
 • Personalized training programs based on your somatotype
@@ -70,7 +70,7 @@ Transform your fitness journey with FitForge, the AI-powered CrossFit and HIIT t
 • Adaptive difficulty based on your performance
 
 🏋️ COMPREHENSIVE TRAINING
-• CrossFit WODs and HIIT sessions
+• HIIT WODs and HIIT sessions
 • Equipment-based or bodyweight workouts
 • Real-time performance tracking
 

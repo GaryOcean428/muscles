@@ -46,13 +46,13 @@ nixPkgs = ["python311", "gcc", "postgresql"]
 
 [phases.install]
 cmds = [
-  "cd backend/crossfit-api",
+  "cd backend/api",
   "pip install --upgrade pip", 
   "pip install -r requirements.txt"
 ]
 
 [start]
-cmd = "cd backend/crossfit-api && gunicorn src.main:app --bind 0.0.0.0:$PORT --workers 4"
+cmd = "cd backend/api && gunicorn src.main:app --bind 0.0.0.0:$PORT --workers 4"
 ```
 
 ## Emergency Deployment Commands

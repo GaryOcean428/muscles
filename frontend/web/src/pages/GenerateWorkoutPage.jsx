@@ -22,7 +22,7 @@ import {
 } from 'lucide-react'
 
 const generateWorkoutSchema = z.object({
-  workout_type: z.enum(['hiit', 'crossfit', 'strength', 'cardio'], {
+  workout_type: z.enum(['hiit', 'hiit', 'strength', 'cardio'], {
     required_error: 'Please select a workout type',
   }),
   duration_minutes: z.number().min(15).max(120),
@@ -150,7 +150,7 @@ const GenerateWorkoutPage = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="hiit">HIIT - High Intensity Interval Training</SelectItem>
-                <SelectItem value="crossfit-style">CrossFit-Style - Functional Fitness</SelectItem>
+                <SelectItem value="crossfit-style">HIIT-Style - Functional Fitness</SelectItem>
                 <SelectItem value="strength">Strength Training</SelectItem>
                 <SelectItem value="cardio">Cardio Focused</SelectItem>
               </SelectContent>

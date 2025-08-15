@@ -8,7 +8,7 @@ The roadmap is structured by phases with approximate timelines and success metri
 
 ## Project Overview
 
-**Muscles** is an AI-powered CrossFit-Inspired/HIIT workout platform designed to help athletes train smarter through personalised workouts and detailed progress tracking. The platform comprises three major components: a Flask backend API, React web frontend, and React Native mobile applications.
+**Muscles** is an AI-powered High-Intensity/HIIT workout platform designed to help athletes train smarter through personalised workouts and detailed progress tracking. The platform comprises three major components: a Flask backend API, React web frontend, and React Native mobile applications.
 
 ---
 
@@ -238,7 +238,7 @@ The roadmap is structured by phases with approximate timelines and success metri
 - **Status**: 🔴 Not Started
 - **Description**: Launch closed beta testing
 - **Actions**:
-  - Recruit CrossFit-Inspired athletes and trainers as beta testers
+  - Recruit High-Intensity athletes and trainers as beta testers
   - Set up beta testing infrastructure
   - Create feedback collection system
   - Distribute beta versions of web and mobile apps
@@ -301,7 +301,7 @@ The roadmap is structured by phases with approximate timelines and success metri
   - Send email campaigns to pre-registered users
   - Run targeted advertising campaigns
   - Create content showcasing calendar integration features
-  - Engage with CrossFit-Inspired fitness communities
+  - Engage with High-Intensity fitness communities
 - **Success Metrics**: Marketing campaigns active, user acquisition tracking
 
 ### Task 7.3: Customer Support and Documentation
@@ -361,7 +361,7 @@ The roadmap is structured by phases with approximate timelines and success metri
 
 ### Business Risks
 - **Market Competition**: Focus on unique AI-powered personalization
-- **Legal Issues with CrossFit Trademark**: Use "CrossFit-Inspired" terminology consistently
+- **Legal Issues with HIIT Trademark**: Use "High-Intensity" terminology consistently
 - **User Adoption Challenges**: Strong onboarding and user education
 - **Revenue Model Validation**: Monitor subscription metrics closely
 
@@ -371,7 +371,7 @@ The roadmap is structured by phases with approximate timelines and success metri
 
 **Muscles** has established a solid foundation with AI-powered workout generation, modern web and mobile clients, integrated payment systems, and calendar synchronization. The roadmap focuses on addressing critical infrastructure issues, completing mobile application development, conducting thorough testing, and executing a coordinated market launch.
 
-The phased approach ensures systematic progression from technical completion to market success, with clear success metrics and risk mitigation strategies at each stage. Following this roadmap will transform **Muscles** from a prototype into a production-ready CrossFit-Inspired workout platform.
+The phased approach ensures systematic progression from technical completion to market success, with clear success metrics and risk mitigation strategies at each stage. Following this roadmap will transform **Muscles** from a prototype into a production-ready High-Intensity workout platform.
 
 ---
 

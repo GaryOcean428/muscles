@@ -1,7 +1,7 @@
 {
-  "name": "Muscles - AI-Powered CrossFit-Inspired & HIIT Workouts",
+  "name": "Muscles - AI-Powered High-Intensity & HIIT Workouts",
   "short_name": "Muscles",
-  "description": "Transform your fitness journey with AI-generated CrossFit-Inspired and HIIT workouts tailored to your goals, equipment, and fitness level.",
+  "description": "Transform your fitness journey with AI-generated High-Intensity and HIIT workouts tailored to your goals, equipment, and fitness level.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1e40af",

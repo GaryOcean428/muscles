@@ -29,7 +29,7 @@ def generate_workout():
         # Get workout preferences from request
         data = request.get_json()
         preferences = {
-            'type': data.get('type', 'mixed'),  # hiit, crossfit, strength, cardio, mixed
+            'type': data.get('type', 'mixed'),  # hiit, muscles, strength, cardio, mixed
             'duration': data.get('duration', 30),  # minutes
             'intensity': data.get('intensity', 'moderate'),  # low, moderate, high, very_high
             'target_areas': data.get('target_areas', []),  # muscle groups or movement patterns

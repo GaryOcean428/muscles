@@ -26,7 +26,7 @@ echo -e "${BLUE}📍 Current directory: $(pwd)${NC}"
 
 # Priority-ordered locations to search for Flask app entry points
 APP_LOCATIONS=(
-  "backend/crossfit-api/src/main.py"
+  "backend/api/src/main.py"
   "src/main.py"
   "main.py"
   "app.py"
