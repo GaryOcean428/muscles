@@ -1,9 +1,10 @@
 import os
 import sys
+from typing import Optional, Dict, Any, Tuple
 # DON'T CHANGE THIS !!!
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-from flask import Flask, send_from_directory, send_file, jsonify
+from flask import Flask, send_from_directory, send_file, jsonify, Response
 from flask_cors import CORS
 from src.models.user import db
 from src.routes.user import user_bp
@@ -103,7 +104,7 @@ with app.app_context():
 
 # Health check endpoint
 @app.route('/api/health')
-def health_check():
+def health_check() -> Response:
     return jsonify({
         'status': 'healthy',
         'message': 'FitForge API is running',

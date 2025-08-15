@@ -26,3 +26,6 @@ psycopg2-binary==2.9.7
 redis==5.0.1
 gunicorn==23.0.0
 groq>=0.10.0,<1.0.0
+mypy==1.11.2
+types-Flask==1.1.6
+types-requests==2.32.0.20241016
