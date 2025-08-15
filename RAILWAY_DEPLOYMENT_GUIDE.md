@@ -73,7 +73,7 @@ muscles/
 ├── start_app.sh                 # Smart application starter
 ├── validate_deployment.sh       # Deployment validator
 ├── backend/
-│   └── crossfit-api/
+│   └── api/
 │       ├── requirements.txt      # Python dependencies
 │       ├── src/
 │       │   └── main.py          # Flask application

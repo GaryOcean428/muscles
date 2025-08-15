@@ -12,7 +12,7 @@ Muscles is a comprehensive full-stack fitness application for CrossFit-Inspired 
 
 1. **Backend Setup (Python Flask API)**:
    ```bash
-   cd backend/crossfit-api
+   cd backend/api
    python3 -m venv venv                    # Takes ~3 seconds
    source venv/bin/activate                # Instant
    pip install -r requirements.txt        # Takes ~20 seconds. NEVER CANCEL. Set timeout to 120+ seconds.
@@ -35,7 +35,7 @@ Muscles is a comprehensive full-stack fitness application for CrossFit-Inspired 
 **Development Mode (Local)**:
 1. **Backend**: 
    ```bash
-   cd backend/crossfit-api && source venv/bin/activate
+   cd backend/api && source venv/bin/activate
    python src/main.py                    # Development server on port 8000
    ```
 
@@ -60,7 +60,7 @@ docker compose up -d                    # NEVER CANCEL. Can take 5-15 minutes fi
 
 **Backend Tests**:
 ```bash
-cd backend/crossfit-api && source venv/bin/activate
+cd backend/api && source venv/bin/activate
 python -m pytest tests/unit/ -v        # Takes ~15 seconds. NEVER CANCEL. Set timeout to 120+ seconds.
 python -m pytest tests/unit/test_simple.py -v  # Quick smoke test, ~1 second
 ```
@@ -71,7 +71,7 @@ python -m pytest tests/unit/test_simple.py -v  # Quick smoke test, ~1 second
 
 **Backend (Python)**:
 ```bash
-cd backend/crossfit-api && source venv/bin/activate
+cd backend/api && source venv/bin/activate
 # No specific linter configured - follows PEP 8 manually
 ```
 
@@ -88,14 +88,14 @@ pnpm lint                              # ESLint check. Takes ~2 seconds. Expect 
 1. **Basic Health Check**:
    ```bash
    ./validate_deployment.sh             # Must pass with 0 failures
-   cd backend/crossfit-api && source venv/bin/activate
+   cd backend/api && source venv/bin/activate
    python -c "from src.main import app; print('✅ Flask app loads')"
    ```
 
 2. **Build Validation**:
    ```bash
    cd frontend/crossfit-web && pnpm build  # Must complete successfully
-   cd backend/crossfit-api && source venv/bin/activate && python -m pytest tests/unit/test_simple.py -v
+   cd backend/api && source venv/bin/activate && python -m pytest tests/unit/test_simple.py -v
    ```
 
 3. **Startup Test**:
@@ -118,7 +118,7 @@ pnpm lint                              # ESLint check. Takes ~2 seconds. Expect 
 
 ```
 muscles/
-├── backend/crossfit-api/           # Flask Python API
+├── backend/api/                    # Flask Python API
 │   ├── src/                       # Source code (main.py is entry point)
 │   ├── tests/                     # pytest tests
 │   ├── requirements.txt           # Python dependencies
@@ -208,16 +208,16 @@ railpack deploy --config railpack.production.json  # Deploy to production
 ## Key Files and Locations
 
 ### Frequently Modified
-- **Backend API routes**: `backend/crossfit-api/src/routes/`
+- **Backend API routes**: `backend/api/src/routes/`
 - **Frontend pages**: `frontend/crossfit-web/src/pages/`  
 - **Frontend components**: `frontend/crossfit-web/src/components/`
-- **Database models**: `backend/crossfit-api/src/models/`
+- **Database models**: `backend/api/src/models/`
 
 ### Configuration Files
 - **Railway**: `railpack.json` (production deployment)
 - **Docker**: `docker-compose.yml` (local development)
 - **Frontend**: `frontend/crossfit-web/package.json`, `vite.config.js`
-- **Backend**: `backend/crossfit-api/requirements.txt`, `pytest.ini`
+- **Backend**: `backend/api/requirements.txt`, `pytest.ini`
 
 ### Don't Modify Unless Necessary
 - Smart deployment scripts (`install_deps.sh`, `start_app.sh`, `validate_deployment.sh`)
