@@ -1,39 +1,22 @@
 {
-  "$schema": "https://schema.railpack.com",
-  "provider": "python",
-  "packages": {
-    "python": "3.11"
+  "version": "1",
+  "metadata": {
+    "name": "muscles"
   },
-  "ignore": [
-    "frontend/",
-    "android/",
-    "node_modules/",
-    ".git/"
-  ],
-  "steps": {
-    "install": {
-      "inputs": [
-        {
-          "local": true,
-          "include": ["."]
-        }
-      ],
-      "commands": [
-        { "cmd": "chmod +x install_deps.sh", "customName": "Make install script executable" },
-        { "cmd": "./install_deps.sh", "customName": "Install Python dependencies" }
-      ]
+  "build": {
+    "provider": "python",
+    "steps": {
+      "install": {
+        "commands": [
+          "pip install --upgrade pip",
+          "pip install -r requirements.txt"
+        ]
+      }
     }
   },
   "deploy": {
-    "inputs": [
-      {
-        "step": "install"
-      }
-    ],
-    "commands": [
-      { "cmd": "chmod +x start_app.sh", "customName": "Make start script executable" }
-    ],
-    "startCommand": "./start_app.sh",
-    "aptPackages": ["libpq5", "python3-dev"]
+    "startCommand": "gunicorn src.main:app --bind 0.0.0.0:${PORT:-8000} --workers 4",
+    "healthCheckPath": "/api/health",
+    "healthCheckTimeout": 300
   }
 }
