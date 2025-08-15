@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://fitforge.up.railway.app/api'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://muscles.up.railway.app'
 
 class AuthService {
   async login(email, password) {
