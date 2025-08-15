@@ -25,20 +25,20 @@
     "install": {
       "commands": [
         "pip install --upgrade pip setuptools wheel",
-        "cd backend/api && pip install --no-cache-dir -r requirements.txt"
+        "cd backend/crossfit-api && pip install --no-cache-dir -r requirements.txt"
       ],
       "timeout": 600
     },
     "build": {
       "commands": [
-        "cd backend/api && python -m py_compile src/main.py",
-        "cd backend/api && python -c 'import src.main; print(\"✅ Flask app imports successfully\")'"
+        "cd backend/crossfit-api && python -m py_compile src/main.py",
+        "cd backend/crossfit-api && python -c 'import src.main; print(\"✅ Flask app imports successfully\")'"
       ],
       "timeout": 120
     }
   },
   "deploy": {
-    "startCommand": "cd backend/api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-5000} --workers 4 --worker-class sync --timeout 120 --keep-alive 2 --max-requests 1000 --max-requests-jitter 100 --log-level info --access-logfile - --error-logfile -",
+    "startCommand": "cd backend/crossfit-api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-5000} --workers 4 --worker-class sync --timeout 120 --keep-alive 2 --max-requests 1000 --max-requests-jitter 100 --log-level info --access-logfile - --error-logfile -",
     "healthCheckPath": "/api/health",
     "healthCheckTimeout": 300,
     "healthCheckInterval": 30,
@@ -48,22 +48,27 @@
     "gracefulShutdownTimeout": 30
   },
   "environment": {
-    "PYTHONPATH": "/app/backend/api",
-    "PYTHONUNBUFFERED": "1",
     "FLASK_ENV": "production",
-    "GUNICORN_CMD_ARGS": "--preload"
+    "PYTHONUNBUFFERED": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "/app/backend/crossfit-api:$PYTHONPATH"
   },
-  "resources": {
-    "memory": "512Mi",
-    "cpu": "500m"
+  "services": {
+    "postgres": {
+      "required": true,
+      "version": "15"
+    },
+    "redis": {
+      "required": true,
+      "version": "7"
+    }
   },
-  "validation": {
-    "required_files": [
-      "backend/api/src/main.py",
-      "backend/api/requirements.txt"
-    ],
-    "required_env_vars": [
-      "PORT"
-    ]
+  "monitoring": {
+    "healthCheck": {
+      "enabled": true,
+      "path": "/api/health",
+      "interval": 30,
+      "timeout": 10
+    }
   }
 }
