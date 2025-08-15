@@ -5,11 +5,11 @@
   },
   "build": {
     "provider": "python",
-    "root": "backend/crossfit-api",
+    "root": "backend/api",
     "steps": {
       "install": {
         "commands": [
-          "cd backend/crossfit-api",
+          "cd backend/api",
           "python -m pip install --upgrade pip",
           "pip install -r requirements.txt"
         ]
@@ -17,7 +17,7 @@
     }
   },
   "deploy": {
-    "startCommand": "cd backend/crossfit-api && gunicorn --chdir . src.main:app --bind 0.0.0.0:${PORT:-5000} --workers 4 --timeout 120 --log-level info",
+    "startCommand": "cd backend/api && gunicorn --chdir . src.main:app --bind 0.0.0.0:${PORT:-5000} --workers 4 --timeout 120 --log-level info",
     "healthCheckPath": "/api/health",
     "healthCheckTimeout": 300,
     "restartPolicyType": "ON_FAILURE",
