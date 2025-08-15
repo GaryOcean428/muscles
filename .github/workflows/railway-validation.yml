@@ -45,13 +45,13 @@ jobs:
     - name: ✅ Test Flask Application Import
       run: |
         echo "✅ Testing Flask application import..."
-        cd backend/crossfit-api
+        cd backend/api
         python -c "from src.main import app; print('✅ Flask app imported successfully')"
 
     - name: 🐍 Run Python Tests
       run: |
         echo "🐍 Running Python unit tests..."
-        cd backend/crossfit-api
+        cd backend/api
         python -m pytest tests/unit/test_simple.py -v
 
     - name: 📋 Generate Deployment Report
@@ -88,7 +88,7 @@ jobs:
     - name: 🔍 Check Python syntax
       run: |
         echo "🔍 Checking Python syntax..."
-        cd backend/crossfit-api
+        cd backend/api
         python -m py_compile src/main.py
         find src -name "*.py" -exec python -m py_compile {} \;
 

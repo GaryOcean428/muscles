@@ -27,7 +27,7 @@ def main():
     # Get project root directory
     project_root = os.path.dirname(os.path.abspath(__file__))
     frontend_dir = os.path.join(project_root, 'frontend', 'crossfit-web')
-    backend_dir = os.path.join(project_root, 'backend', 'crossfit-api')
+    backend_dir = os.path.join(project_root, 'backend', 'api')
     static_dir = os.path.join(backend_dir, 'src', 'static')
     
     print(f"📁 Project root: {project_root}")

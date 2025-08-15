@@ -5,7 +5,7 @@
   "private": true,
   "workspaces": [
     "frontend/crossfit-web",
-    "backend/crossfit-api"
+    "backend/api"
   ],
   "scripts": {
     "railpack:build": "railpack build",
@@ -14,11 +14,11 @@
     "railpack:validate": "railpack validate",
     "railpack:logs": "railpack logs --follow",
     "install:frontend": "cd frontend/crossfit-web && pnpm install",
-    "install:backend": "cd backend/crossfit-api && pip install -r requirements.txt",
+    "install:backend": "cd backend/api && pip install -r requirements.txt",
     "build:frontend": "cd frontend/crossfit-web && pnpm build",
-    "test:backend": "cd backend/crossfit-api && python -m pytest tests/",
+    "test:backend": "cd backend/api && python -m pytest tests/",
     "dev:frontend": "cd frontend/crossfit-web && pnpm dev",
-    "dev:backend": "cd backend/crossfit-api && python src/main.py"
+    "dev:backend": "cd backend/api && python src/main.py"
   },
   "engines": {
     "node": ">=20",
