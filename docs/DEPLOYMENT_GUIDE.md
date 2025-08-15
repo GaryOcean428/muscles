@@ -2,7 +2,7 @@
 
 ## Overview
 
-This guide provides comprehensive instructions for deploying the FitForge CrossFit/HIIT Workout Application to production environments. The application consists of a Flask backend API, React web frontend, and React Native mobile application.
+This guide provides comprehensive instructions for deploying the FitForge HIIT/HIIT Workout Application to production environments. The application consists of a Flask backend API, React web frontend, and React Native mobile application.
 
 ## Architecture Overview
 
@@ -131,7 +131,7 @@ sudo su - fitforge
 
 # Clone repository
 git clone https://github.com/your-org/fitforge-app.git
-cd fitforge-app/backend/crossfit-api
+cd fitforge-app/backend/api
 
 # Create virtual environment
 python3.11 -m venv venv
@@ -280,10 +280,10 @@ After=network.target postgresql.service redis.service
 Type=notify
 User=fitforge
 Group=fitforge
-WorkingDirectory=/home/fitforge/fitforge-app/backend/crossfit-api
-Environment=PATH=/home/fitforge/fitforge-app/backend/crossfit-api/venv/bin
-EnvironmentFile=/home/fitforge/fitforge-app/backend/crossfit-api/.env.production
-ExecStart=/home/fitforge/fitforge-app/backend/crossfit-api/venv/bin/gunicorn --config gunicorn.conf.py src.main:app
+WorkingDirectory=/home/fitforge/fitforge-app/backend/api
+Environment=PATH=/home/fitforge/fitforge-app/backend/api/venv/bin
+EnvironmentFile=/home/fitforge/fitforge-app/backend/api/.env.production
+ExecStart=/home/fitforge/fitforge-app/backend/api/venv/bin/gunicorn --config gunicorn.conf.py src.main:app
 ExecReload=/bin/kill -s HUP $MAINPID
 Restart=always
 RestartSec=10
@@ -312,7 +312,7 @@ sudo systemctl status fitforge-api
 
 ```bash
 # Navigate to frontend directory
-cd /home/fitforge/fitforge-app/frontend/crossfit-web
+cd /home/fitforge/fitforge-app/frontend/web
 
 # Install dependencies
 npm install
@@ -478,7 +478,7 @@ sudo systemctl enable nginx
 
 ```bash
 # Navigate to Android project
-cd /home/fitforge/fitforge-app/android/CrossFitApp
+cd /home/fitforge/fitforge-app/android/MusclesApp
 
 # Install dependencies
 npm install
@@ -515,7 +515,7 @@ cd ios
 pod install
 
 # Build for release (requires Xcode)
-# Open CrossFitApp.xcworkspace in Xcode
+# Open HIITApp.xcworkspace in Xcode
 # Archive and upload to App Store Connect
 ```
 
@@ -893,7 +893,7 @@ cd /home/fitforge/fitforge-app
 git pull origin main
 
 # 3. Update backend
-cd backend/crossfit-api
+cd backend/api
 source venv/bin/activate
 pip install -r requirements.txt
 
@@ -904,7 +904,7 @@ flask db upgrade
 sudo systemctl restart fitforge-api
 
 # 6. Update frontend
-cd ../../frontend/crossfit-web
+cd ../../frontend/web
 npm install
 npm run build
 sudo cp -r build/* /var/www/fitforge/

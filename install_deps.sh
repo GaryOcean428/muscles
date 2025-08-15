@@ -23,7 +23,7 @@ fi
 
 # Priority-ordered locations to search for requirements.txt
 LOCATIONS=(
-  "backend/crossfit-api/requirements.txt"
+  "backend/api/requirements.txt"
   "requirements.txt" 
   "backend/requirements.txt"
   "api/requirements.txt"

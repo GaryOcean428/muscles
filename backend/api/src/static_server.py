@@ -9,7 +9,7 @@ def setup_static_routes(app):
     
     # Path to the built React app
     frontend_build_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 
-                                      'frontend', 'crossfit-web', 'dist')
+                                      'frontend', 'muscles-web', 'dist')
     
     @app.route('/')
     def serve_frontend():

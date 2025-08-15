@@ -1,4 +1,4 @@
-# FitForge CrossFit/HIIT Application - Deployment Status
+# FitForge HIIT/HIIT Application - Deployment Status
 
 ## 🎯 **Current Status: 95% Complete**
 
@@ -68,7 +68,7 @@
 
 ### **3. Android APK Generation (1 hour)**
 ```bash
-cd android/CrossFitApp
+cd android/MusclesApp
 npx react-native bundle --platform android --dev false
 # Generate signed APK
 ```

@@ -146,7 +146,7 @@ def create_exercise_templates():
             'image_url': ''
         },
         
-        # CrossFit Specific
+        # HIIT Specific
         {
             'name': 'Thrusters',
             'category': 'strength',

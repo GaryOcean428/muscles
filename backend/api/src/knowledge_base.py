@@ -1,6 +1,6 @@
 """
 Research-Based Knowledge Base for AI Workout Generation
-Based on "Research-Based Insights for Optimizing HIIT and CrossFit Programs Across Body Types"
+Based on "Research-Based Insights for Optimizing HIIT and HIIT Programs Across Body Types"
 """
 
 # Somatotype-specific training adaptations
@@ -19,7 +19,7 @@ SOMATOTYPE_ADAPTATIONS = {
             "duration": "15-30_minutes",
             "frequency": "3-4_per_week"
         },
-        "crossfit_adaptations": {
+        "muscles_adaptations": {
             "focus": "foundational_movements",
             "scaling": "bodyweight_emphasis",
             "progression": "gradual_loading",
@@ -45,7 +45,7 @@ SOMATOTYPE_ADAPTATIONS = {
             "duration": "20-45_minutes",
             "frequency": "4-6_per_week"
         },
-        "crossfit_adaptations": {
+        "muscles_adaptations": {
             "focus": "high_intensity_functional_movements",
             "scaling": "progressive_overload",
             "progression": "rapid_advancement",
@@ -71,7 +71,7 @@ SOMATOTYPE_ADAPTATIONS = {
             "duration": "30-60_minutes",
             "frequency": "5-6_per_week"
         },
-        "crossfit_adaptations": {
+        "muscles_adaptations": {
             "focus": "metabolic_conditioning",
             "scaling": "volume_emphasis",
             "progression": "endurance_building",
@@ -165,7 +165,7 @@ PERIODIZATION_PRINCIPLES = {
         "deload_triggers": "elevated_hrv_scores",
         "progression_markers": "performance_metrics"
     },
-    "crossfit_periodization": {
+    "muscles_periodization": {
         "constantly_varied": "movement_patterns",
         "progressive_overload": "systematic_advancement",
         "modal_domains": "ten_fitness_components",
@@ -176,7 +176,7 @@ PERIODIZATION_PRINCIPLES = {
 # Injury prevention and biomechanical insights
 INJURY_PREVENTION = {
     "common_injury_areas": {
-        "crossfit": ["shoulders", "knees", "lumbar_spine"],
+        "muscles": ["shoulders", "knees", "lumbar_spine"],
         "hiit": ["ankles", "knees", "lower_back"]
     },
     "risk_factors": {
@@ -192,7 +192,7 @@ INJURY_PREVENTION = {
         "recovery_optimization": "systematic_rest"
     },
     "high_risk_workouts": {
-        "crossfit": ["fran", "murph", "fight_gone_bad", "helen", "filthy_50"],
+        "muscles": ["fran", "murph", "fight_gone_bad", "helen", "filthy_50"],
         "symptoms": ["excessive_fatigue", "prolonged_soreness", "swelling"]
     }
 }
@@ -227,7 +227,7 @@ RECOVERY_PROTOCOLS = {
 
 # Hybrid training model integration
 HYBRID_TRAINING_PRINCIPLES = {
-    "hiit_crossfit_synergy": {
+    "hiit_muscles_synergy": {
         "shared_principles": "functional_movements",
         "complementary_adaptations": "cardiovascular_strength",
         "periodization_integration": "systematic_planning",

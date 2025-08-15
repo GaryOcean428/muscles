@@ -1,8 +1,8 @@
-# Muscles - CrossFit-Inspired/HIIT Workout Application User Guide
+# Muscles - High-Intensity/HIIT Workout Application User Guide
 
 ## Welcome to Muscles
 
-Muscles is your comprehensive fitness companion designed specifically for CrossFit-Inspired and High-Intensity Interval Training (HIIT) enthusiasts. Whether you're a beginner starting your fitness journey or an experienced athlete looking to optimize your training, Muscles provides AI-powered workout generation, progress tracking, and seamless calendar integration.
+Muscles is your comprehensive fitness companion designed specifically for High-Intensity and High-Intensity Interval Training (HIIT) enthusiasts. Whether you're a beginner starting your fitness journey or an experienced athlete looking to optimize your training, Muscles provides AI-powered workout generation, progress tracking, and seamless calendar integration.
 
 ## Table of Contents
 
@@ -130,7 +130,7 @@ FitForge's AI-powered workout generator creates personalized training sessions b
 **Mixed Workouts:**
 - Combination of strength and cardio elements
 - Functional fitness approach
-- CrossFit-style workouts
+- HIIT-style workouts
 - Constantly varied movements
 
 ### Customizing Generated Workouts

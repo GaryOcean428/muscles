@@ -6,9 +6,9 @@ Fixed Railway deployment error: "Install inputs must be an image or step input"
 ## Root Cause
 Multiple railpack.json files existed in the repository, causing configuration conflicts:
 - Main railpack.json (root level)
-- backend/crossfit-api/railpack.json (complex multi-step config)
-- android/CrossFitApp/railpack.json
-- frontend/crossfit-web/railpack.json
+- backend/api/railpack.json (complex multi-step config)
+- android/MusclesApp/railpack.json
+- frontend/web/railpack.json
 - Various railpack variants (development, flat, monorepo, production)
 
 Railway was potentially using a complex configuration with step dependencies that created validation issues.
@@ -37,12 +37,12 @@ Railway was potentially using a complex configuration with step dependencies tha
     "install": {
       "commands": [
         "pip install --upgrade pip",
-        "if [ -f backend/crossfit-api/requirements.txt ]; then pip install -r backend/crossfit-api/requirements.txt; elif [ -f requirements.txt ]; then pip install -r requirements.txt; else echo 'ERROR: No requirements.txt found'; exit 1; fi"
+        "if [ -f backend/api/requirements.txt ]; then pip install -r backend/api/requirements.txt; elif [ -f requirements.txt ]; then pip install -r requirements.txt; else echo 'ERROR: No requirements.txt found'; exit 1; fi"
       ]
     }
   },
   "deploy": {
-    "startCommand": "cd backend/crossfit-api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-8000} --workers 4",
+    "startCommand": "cd backend/api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-8000} --workers 4",
     "aptPackages": ["libpq5", "python3-dev"]
   }
 }

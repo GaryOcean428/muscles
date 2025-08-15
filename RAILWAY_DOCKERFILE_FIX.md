@@ -11,7 +11,7 @@ Railway was detecting and using `Dockerfile.python` instead of the intended `rai
 
 The problematic Dockerfile.python had an invalid CMD that tried to execute `cd` as an executable:
 ```dockerfile
-CMD cd backend/crossfit-api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-8000} --workers 4
+CMD cd backend/api && gunicorn src.main:app --bind 0.0.0.0:${PORT:-8000} --workers 4
 ```
 
 ## Solution Applied

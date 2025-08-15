@@ -1,8 +1,8 @@
-# Muscles - CrossFit-Inspired/HIIT Workout Application
+# Muscles - High-Intensity/HIIT Workout Application
 
 ## Project Overview
 
-This is a comprehensive CrossFit-Inspired/HIIT workout application that provides personalized workout plans, calendar integration, and progress tracking across web and mobile platforms.
+This is a comprehensive High-Intensity/HIIT workout application that provides personalized workout plans, calendar integration, and progress tracking across web and mobile platforms.
 
 ## Architecture
 
@@ -74,14 +74,14 @@ This is a comprehensive CrossFit-Inspired/HIIT workout application that provides
 
 ### Backend Development
 ```bash
-cd backend/crossfit-api
+cd backend/api
 source venv/bin/activate
 python src/main.py
 ```
 
 ### Frontend Development
 ```bash
-cd frontend/crossfit-web
+cd frontend/web
 pnpm run dev
 ```
 

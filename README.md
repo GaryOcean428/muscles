@@ -1,8 +1,8 @@
-# Muscles - CrossFit-Inspired/HIIT Workout Application
+# Muscles - High-Intensity/HIIT Workout Application
 
 ![Muscles Logo](docs/images/logo.png)
 
-Muscles is a comprehensive fitness application designed specifically for CrossFit-Inspired and High-Intensity Interval Training (HIIT) enthusiasts. Built with modern technologies, it provides AI-powered workout generation, progress tracking, calendar integration, and subscription management.
+Muscles is a comprehensive fitness application designed specifically for High-Intensity and High-Intensity Interval Training (HIIT) enthusiasts. Built with modern technologies, it provides AI-powered workout generation, progress tracking, calendar integration, and subscription management.
 
 ## 🚀 Features
 
@@ -136,7 +136,7 @@ This application is configured for Railway deployment using Railpack for optimiz
 
 1. **Navigate to backend directory**
    ```bash
-   cd backend/crossfit-api
+   cd backend/api
    ```
 
 2. **Create virtual environment**
@@ -168,7 +168,7 @@ This application is configured for Railway deployment using Railpack for optimiz
 
 1. **Navigate to frontend directory**
    ```bash
-   cd frontend/crossfit-web
+   cd frontend/web
    ```
 
 2. **Install dependencies**

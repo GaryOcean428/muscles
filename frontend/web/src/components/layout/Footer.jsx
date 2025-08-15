@@ -15,7 +15,7 @@ const Footer = () => {
               <span className="font-bold text-xl">FitForge</span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-xs">
-              AI-powered CrossFit and HIIT workout generator. Transform your fitness journey with personalized training programs.
+              AI-powered HIIT and HIIT workout generator. Transform your fitness journey with personalized training programs.
             </p>
           </div>
 

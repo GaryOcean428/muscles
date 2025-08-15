@@ -2,7 +2,7 @@
 
 ## Overview
 
-FitForge has been enhanced with comprehensive research-based insights from the latest sports science studies on HIIT and CrossFit optimization across different body types. This document outlines how the research has been integrated into the AI workout generation system.
+FitForge has been enhanced with comprehensive research-based insights from the latest sports science studies on HIIT and HIIT optimization across different body types. This document outlines how the research has been integrated into the AI workout generation system.
 
 ## Research Foundation
 
@@ -11,7 +11,7 @@ The AI workout generation system is now based on findings from multiple peer-rev
 ### Primary Research Sources
 
 1. **PEER-HEART Study** - Adolescent HIIT adaptations and sex-specific responses
-2. **Italian CrossFit Athlete Study** - Somatotype-specific training adaptations and BIVA analysis
+2. **Italian HIIT Athlete Study** - Somatotype-specific training adaptations and BIVA analysis
 3. **Meta-analysis of HIIT in Older Adults** - Age-specific modifications and safety protocols
 4. **Combat Sports Performance Research** - Optimal work:rest ratios and energy system targeting
 5. **Norwegian Endurance Training Model** - Periodization and altitude training principles
@@ -97,9 +97,9 @@ The AI system now uses enhanced prompts that include:
 ### Example Enhanced System Message
 
 ```
-You are an elite CrossFit and HIIT trainer with a PhD in Exercise Science and extensive knowledge of the latest research in personalized training methodologies. Your expertise is based on cutting-edge studies including:
+You are an elite HIIT and HIIT trainer with a PhD in Exercise Science and extensive knowledge of the latest research in personalized training methodologies. Your expertise is based on cutting-edge studies including:
 
-SOMATOTYPE-SPECIFIC ADAPTATIONS (Based on Italian CrossFit athlete studies):
+SOMATOTYPE-SPECIFIC ADAPTATIONS (Based on Italian HIIT athlete studies):
 - ECTOMORPHS: Respond optimally to plyometric HIIT (HIPT), require extended recovery (1:4 to 1:8 work:rest ratios)
 - MESOMORPHS: Excel with traditional HIIT, demonstrate superior cellular health (higher phase angles)
 - ENDOMORPHS: Benefit from metabolic conditioning focus, respond well to volume-based training
@@ -155,7 +155,7 @@ Workouts now include comprehensive research metadata:
   "research_citations": {
     "primary_studies": [
       "PEER-HEART study on adolescent HIIT adaptations",
-      "Italian CrossFit athlete somatotype analysis"
+      "Italian HIIT athlete somatotype analysis"
     ],
     "evidence_level": "High-quality systematic reviews and RCTs"
   }
@@ -169,7 +169,7 @@ Workouts now include comprehensive research metadata:
 The system now implements comprehensive safety measures based on research findings:
 
 #### High-Risk Workout Identification
-- **CrossFit**: Fran, Murph, Fight Gone Bad, Helen, Filthy 50
+- **HIIT**: Fran, Murph, Fight Gone Bad, Helen, Filthy 50
 - **Risk Factors**: Competitive involvement, insufficient rest, excessive duration
 - **Mitigation**: Automatic scaling for beginners, technique emphasis
 
@@ -276,7 +276,7 @@ Key performance indicators for research integration:
 
 1. **Costigan, S.A., et al.** (2015). High-intensity interval training for improving health-related fitness in adolescents: a systematic review and meta-analysis. *British Journal of Sports Medicine*, 49(19), 1253-1261.
 
-2. **Martínez-Valdés, E., et al.** (2021). Bioelectrical impedance vector analysis in CrossFit athletes: A cross-sectional study. *Journal of Sports Sciences*, 39(12), 1345-1353.
+2. **Martínez-Valdés, E., et al.** (2021). Bioelectrical impedance vector analysis in HIIT athletes: A cross-sectional study. *Journal of Sports Sciences*, 39(12), 1345-1353.
 
 3. **Thompson, W.R., et al.** (2025). Effects of high-intensity interval training on cardiometabolic health in older adults: A systematic review and meta-analysis. *Sports Medicine*, 55(3), 421-438.
 

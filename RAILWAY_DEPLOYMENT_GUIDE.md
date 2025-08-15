@@ -1,6 +1,6 @@
 # Railway Deployment Configuration Guide
 
-This guide explains the Railway deployment configuration for the Muscles CrossFit application and how to troubleshoot common issues.
+This guide explains the Railway deployment configuration for the Muscles HIIT application and how to troubleshoot common issues.
 
 ## 🚀 Quick Start
 
@@ -88,7 +88,7 @@ muscles/
 
 The script searches for `requirements.txt` in priority order:
 
-1. `backend/crossfit-api/requirements.txt` ✅ (Current location)
+1. `backend/api/requirements.txt` ✅ (Current location)
 2. `requirements.txt` (Root level)
 3. `backend/requirements.txt`
 4. `api/requirements.txt`
@@ -105,7 +105,7 @@ The script searches for `requirements.txt` in priority order:
 
 The script searches for Flask applications in priority order:
 
-1. `backend/crossfit-api/src/main.py` ✅ (Current location)
+1. `backend/api/src/main.py` ✅ (Current location)
 2. `src/main.py`
 3. `main.py`
 4. `app.py`
@@ -151,7 +151,7 @@ timeout 10s ./start_app.sh
 ### Run Application Tests
 
 ```bash
-cd backend/crossfit-api
+cd backend/api
 python -m pytest tests/unit/ -v
 ```
 
@@ -167,8 +167,8 @@ ERROR: Could not find requirements.txt in any expected location
 ```
 
 **Solutions:**
-- Verify `backend/crossfit-api/requirements.txt` exists
-- Check file permissions: `ls -la backend/crossfit-api/requirements.txt`
+- Verify `backend/api/requirements.txt` exists
+- Check file permissions: `ls -la backend/api/requirements.txt`
 - Ensure file is not empty
 - Run validation: `./validate_deployment.sh`
 
@@ -180,10 +180,10 @@ ERROR: Could not find application entry point
 ```
 
 **Solutions:**
-- Verify `backend/crossfit-api/src/main.py` exists
-- Check that it contains Flask app: `grep -n "Flask" backend/crossfit-api/src/main.py`
+- Verify `backend/api/src/main.py` exists
+- Check that it contains Flask app: `grep -n "Flask" backend/api/src/main.py`
 - Ensure file permissions are correct
-- Validate Flask app can be imported: `cd backend/crossfit-api && python -c "from src.main import app"`
+- Validate Flask app can be imported: `cd backend/api && python -c "from src.main import app"`
 
 #### 3. Module Import Errors
 

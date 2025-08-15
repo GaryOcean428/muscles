@@ -20,14 +20,14 @@ This project uses Railpack for Railway deployments with adaptive path resolution
 The deployment configuration automatically searches for:
 
 ### Requirements.txt locations (in order):
-1. `backend/crossfit-api/requirements.txt`
+1. `backend/api/requirements.txt`
 2. `requirements.txt` (project root)
 3. `backend/requirements.txt`
 4. `api/requirements.txt`
 5. `src/requirements.txt`
 
 ### Application entry points (in order):
-1. `backend/crossfit-api/src/main.py`
+1. `backend/api/src/main.py`
 2. `src/main.py`
 3. `main.py`
 4. `app.py`

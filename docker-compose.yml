@@ -11,7 +11,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-fitforge_password}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./backend/crossfit-api/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./backend/api/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
     networks:
@@ -44,7 +44,7 @@ services:
   # Flask Backend API
   backend:
     build:
-      context: ./backend/crossfit-api
+      context: ./backend/api
       dockerfile: Dockerfile
     container_name: fitforge_backend
     environment:
@@ -79,12 +79,12 @@ services:
       timeout: 10s
       retries: 3
     volumes:
-      - ./backend/crossfit-api/logs:/app/logs
+      - ./backend/api/logs:/app/logs
 
   # React Frontend
   frontend:
     build:
-      context: ./frontend/crossfit-web
+      context: ./frontend/web
       dockerfile: Dockerfile
       args:
         - REACT_APP_API_URL=${REACT_APP_API_URL:-http://localhost:8000/api}

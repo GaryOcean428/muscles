@@ -9,7 +9,7 @@ class Workout(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     name = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text)
-    workout_type = db.Column(db.String(50), nullable=False)  # crossfit-style, hiit, strength, cardio
+    workout_type = db.Column(db.String(50), nullable=False)  # muscles-style, hiit, strength, cardio
     duration_minutes = db.Column(db.Integer)
     difficulty_level = db.Column(db.String(20))  # beginner, intermediate, advanced
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
