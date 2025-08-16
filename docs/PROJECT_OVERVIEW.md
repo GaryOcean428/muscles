@@ -82,7 +82,7 @@ python src/main.py
 ### Frontend Development
 ```bash
 cd frontend/web
-pnpm run dev
+yarn dev
 ```
 
 ## API Endpoints (Planned)

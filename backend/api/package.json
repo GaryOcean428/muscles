@@ -1,0 +1,14 @@
+{
+  "name": "muscles-api",
+  "version": "1.0.0",
+  "description": "Muscles HIIT application backend API",
+  "private": true,
+  "scripts": {
+    "dev": "python src/main.py",
+    "test": "python -m pytest tests/unit/test_simple.py -v",
+    "type-check": "mypy src/main.py"
+  },
+  "engines": {
+    "python": ">=3.11"
+  }
+}

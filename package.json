@@ -8,18 +8,23 @@
     "backend/api"
   ],
   "scripts": {
-    "install:frontend": "cd frontend/web && npm install",
+    "install:frontend": "yarn workspace muscles-web install",
     "install:backend": "cd backend/api && pip install -r requirements.txt",
-    "build:frontend": "cd frontend/web && npm run build",
+    "build:frontend": "yarn workspace muscles-web build",
     "test:backend": "cd backend/api && python -m pytest tests/unit/test_simple.py -v",
-    "lint:frontend": "cd frontend/web && npm run lint",
+    "lint:frontend": "yarn workspace muscles-web lint",
     "type-check:backend": "cd backend/api && mypy src/main.py",
-    "dev:frontend": "cd frontend/web && npm run dev",
+    "dev:frontend": "yarn workspace muscles-web dev",
     "dev:backend": "cd backend/api && python src/main.py",
-    "validate": "./validate_deployment.sh"
+    "validate": "./validate_deployment.sh",
+    "build": "yarn workspaces foreach --all run build",
+    "test": "yarn workspaces foreach --all run test",
+    "dev": "yarn workspaces foreach --parallel --interlaced run dev"
   },
   "engines": {
     "node": ">=20",
-    "python": ">=3.11"
-  }
+    "python": ">=3.11",
+    "yarn": ">=4.9.2"
+  },
+  "packageManager": "yarn@4.9.2"
 }
