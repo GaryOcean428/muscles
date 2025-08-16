@@ -76,7 +76,7 @@ Muscles is a comprehensive fitness application designed specifically for High-In
 
 ### Prerequisites
 - Docker and Docker Compose
-- Node.js 18+ (for local development)
+- Node.js 20+ with Yarn 4.9.2+ (for local development)
 - Python 3.11+ (for local development)
 
 ### Railway Deployment with Railpack (Recommended)
@@ -173,17 +173,12 @@ This application is configured for Railway deployment using Railpack for optimiz
 
 2. **Install dependencies**
    ```bash
-   pnpm install
+   yarn install
    ```
 
 3. **Start development server**
    ```bash
-   pnpm dev
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
+   yarn workspace muscles-web dev
    ```
 
 #### Mobile App Setup

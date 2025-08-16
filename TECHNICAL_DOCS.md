@@ -55,8 +55,8 @@ muscles/
 2. **Frontend Setup**:
    ```bash
    cd frontend/web
-   npm install
-   npm run dev
+   yarn install
+   yarn dev
    ```
 
 3. **Full Stack with Docker**:
@@ -68,23 +68,23 @@ muscles/
 
 ```bash
 # Install all dependencies
-npm run install:backend
-npm run install:frontend
+yarn install:backend
+yarn install:frontend
 
 # Build frontend
-npm run build:frontend
+yarn build:frontend
 
 # Run tests
-npm run test:backend
+yarn test:backend
 
 # Type checking
-npm run type-check:backend
+yarn type-check:backend
 
 # Linting
-npm run lint:frontend
+yarn lint:frontend
 
 # Validate deployment
-npm run validate
+yarn validate
 ```
 
 ## Railway Deployment
