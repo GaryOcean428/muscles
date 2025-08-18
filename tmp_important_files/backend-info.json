@@ -1,0 +1,39 @@
+{
+  "name": "muscles-ai-fitness-backend",
+  "version": "1.0.0",
+  "description": "Complete Supabase backend infrastructure for Muscles AI Fitness application",
+  "scripts": {
+    "types:generate": "supabase gen types typescript --local > supabase/types.ts",
+    "db:reset": "supabase db reset",
+    "db:migrate": "supabase db push",
+    "functions:deploy": "supabase functions deploy",
+    "functions:serve": "supabase functions serve"
+  },
+  "keywords": ["fitness", "ai", "supabase", "backend", "workout-generator", "stripe"],
+  "backend_features": {
+    "database": {
+      "tables": 12,
+      "authentication": "Supabase Auth with profile triggers",
+      "rls": "Row Level Security enabled"
+    },
+    "edge_functions": {
+      "ai_chat": "https://ksrpwcmgripianipsdti.supabase.co/functions/v1/fitcraft-ai-chat",
+      "workout_generator": "https://ksrpwcmgripianipsdti.supabase.co/functions/v1/ai-workout-generator",
+      "subscription_creation": "https://ksrpwcmgripianipsdti.supabase.co/functions/v1/create-subscription",
+      "stripe_webhook": "https://ksrpwcmgripianipsdti.supabase.co/functions/v1/stripe-webhook"
+    },
+    "storage": {
+      "fitness_content": "Public bucket for images/videos (50MB limit)"
+    },
+    "ai_integration": {
+      "provider": "Groq (LLaMA 3.1-8B Instant)",
+      "features": ["Workout Generation", "Personal Coaching", "12-Step Onboarding"]
+    },
+    "payments": {
+      "provider": "Stripe",
+      "plans": ["Basic ($9.99)", "Premium ($29.99)", "Pro ($49.99)"]
+    }
+  },
+  "deployment_status": "READY FOR PRODUCTION",
+  "last_updated": "2025-08-18"
+}

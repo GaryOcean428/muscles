@@ -1,0 +1,513 @@
+.browser_screenshots/visual_feedback_20250818_184827.png
+.browser_screenshots/visual_feedback_20250818_184902.png
+.browser_screenshots/visual_feedback_20250818_190558.png
+.browser_screenshots/visual_feedback_20250818_191824.png
+.browser_screenshots/visual_feedback_20250818_213745.png
+.browser_screenshots/visual_feedback_20250818_214415.png
+.gitignore
+.python-version
+BACKEND_SETUP_COMPLETE.md
+DEPLOYMENT_GUIDE.md
+DEPLOYMENT_STATUS.md
+README.md
+STRIPE_INTEGRATION_TESTING.md
+backend-info.json
+browser/browser_extension/error_capture/background.js
+browser/browser_extension/error_capture/content.js
+browser/browser_extension/error_capture/injector.js
+browser/browser_extension/error_capture/manifest.json
+browser/global_browser.py
+browser/screenshots/muscles_ai_initial_load.png
+browser/screenshots/muscles_ai_signup_tab.png
+browser/screenshots/railway_error_verification.png
+browser/user_data/BrowserMetrics-spare.pma
+browser/user_data/Default/Account Web Data
+browser/user_data/Default/Account Web Data-journal
+browser/user_data/Default/Affiliation Database
+browser/user_data/Default/Affiliation Database-journal
+browser/user_data/Default/AutofillStrikeDatabase/LOCK
+browser/user_data/Default/AutofillStrikeDatabase/LOG
+browser/user_data/Default/AutofillStrikeDatabase/LOG.old
+browser/user_data/Default/BrowsingTopicsSiteData
+browser/user_data/Default/BrowsingTopicsSiteData-journal
+browser/user_data/Default/BrowsingTopicsState
+browser/user_data/Default/BudgetDatabase/LOCK
+browser/user_data/Default/BudgetDatabase/LOG
+browser/user_data/Default/BudgetDatabase/LOG.old
+browser/user_data/Default/Cache/Cache_Data/02a95be67d82617e_0
+browser/user_data/Default/Cache/Cache_Data/0460a95503f9c25e_0
+browser/user_data/Default/Cache/Cache_Data/09e982a15bee8638_0
+browser/user_data/Default/Cache/Cache_Data/1c54955e50d2a29d_0
+browser/user_data/Default/Cache/Cache_Data/1c6e1a13177cc61a_0
+browser/user_data/Default/Cache/Cache_Data/2336c7b4d3ff6df9_0
+browser/user_data/Default/Cache/Cache_Data/23cb9d325f091486_0
+browser/user_data/Default/Cache/Cache_Data/26a0233aa6f8017f_0
+browser/user_data/Default/Cache/Cache_Data/2c98a4803b0ca44a_0
+browser/user_data/Default/Cache/Cache_Data/36428a0f7e99083c_0
+browser/user_data/Default/Cache/Cache_Data/413dcb5d6cd0c1a0_0
+browser/user_data/Default/Cache/Cache_Data/462e90cfe84721a8_0
+browser/user_data/Default/Cache/Cache_Data/4a7b646f0878bde7_0
+browser/user_data/Default/Cache/Cache_Data/537494808cd7749b_0
+browser/user_data/Default/Cache/Cache_Data/53bd365d116e556a_0
+browser/user_data/Default/Cache/Cache_Data/704fe9d840d4999a_0
+browser/user_data/Default/Cache/Cache_Data/7269a20f66e42383_0
+browser/user_data/Default/Cache/Cache_Data/75e94d7d9967c7e6_0
+browser/user_data/Default/Cache/Cache_Data/7a93a29a3f76295c_0
+browser/user_data/Default/Cache/Cache_Data/7bb69a315fffc326_0
+browser/user_data/Default/Cache/Cache_Data/82e22a580e4fe36e_0
+browser/user_data/Default/Cache/Cache_Data/8ddd0bc2d549a022_0
+browser/user_data/Default/Cache/Cache_Data/9401ff4323ee7a3b_0
+browser/user_data/Default/Cache/Cache_Data/995334985f7d9e89_0
+browser/user_data/Default/Cache/Cache_Data/a2fd3f611a6f6610_0
+browser/user_data/Default/Cache/Cache_Data/a6aec17e92086c3e_0
+browser/user_data/Default/Cache/Cache_Data/b31ca8283c4fb7c2_0
+browser/user_data/Default/Cache/Cache_Data/c13331e52a1478d1_0
+browser/user_data/Default/Cache/Cache_Data/ce1bf124c8860e6e_0
+browser/user_data/Default/Cache/Cache_Data/d64644351d4a4287_0
+browser/user_data/Default/Cache/Cache_Data/da81f62aab0ae48d_0
+browser/user_data/Default/Cache/Cache_Data/e1abc06098d7491e_0
+browser/user_data/Default/Cache/Cache_Data/e8fe40b211fb4766_0
+browser/user_data/Default/Cache/Cache_Data/eb459be5c871d41d_0
+browser/user_data/Default/Cache/Cache_Data/ed5152d08612b2ae_0
+browser/user_data/Default/Cache/Cache_Data/f608e4d693bd3f66_0
+browser/user_data/Default/Cache/Cache_Data/index
+browser/user_data/Default/Cache/Cache_Data/index-dir/the-real-index
+browser/user_data/Default/ClientCertificates/LOCK
+browser/user_data/Default/ClientCertificates/LOG
+browser/user_data/Default/ClientCertificates/LOG.old
+browser/user_data/Default/Code Cache/js/18ec486c36a0e969_0
+browser/user_data/Default/Code Cache/js/2adbbdaa7f9284ff_0
+browser/user_data/Default/Code Cache/js/5902e189ca0c379f_0
+browser/user_data/Default/Code Cache/js/92bbd543dba0229f_0
+browser/user_data/Default/Code Cache/js/bbac2374e26b5954_0
+browser/user_data/Default/Code Cache/js/be1ec5fcaa96ee09_0
+browser/user_data/Default/Code Cache/js/daa8c26eca0d1bc9_0
+browser/user_data/Default/Code Cache/js/f0ea2704b68ea10a_0
+browser/user_data/Default/Code Cache/js/index
+browser/user_data/Default/Code Cache/js/index-dir/the-real-index
+browser/user_data/Default/Code Cache/wasm/index
+browser/user_data/Default/Code Cache/wasm/index-dir/the-real-index
+browser/user_data/Default/Cookies
+browser/user_data/Default/Cookies-journal
+browser/user_data/Default/DIPS
+browser/user_data/Default/DIPS-shm
+browser/user_data/Default/DIPS-wal
+browser/user_data/Default/DawnGraphiteCache/data_0
+browser/user_data/Default/DawnGraphiteCache/data_1
+browser/user_data/Default/DawnGraphiteCache/data_2
+browser/user_data/Default/DawnGraphiteCache/data_3
+browser/user_data/Default/DawnGraphiteCache/index
+browser/user_data/Default/DawnWebGPUCache/data_0
+browser/user_data/Default/DawnWebGPUCache/data_1
+browser/user_data/Default/DawnWebGPUCache/data_2
+browser/user_data/Default/DawnWebGPUCache/data_3
+browser/user_data/Default/DawnWebGPUCache/index
+browser/user_data/Default/Download Service/EntryDB/LOCK
+browser/user_data/Default/Download Service/EntryDB/LOG
+browser/user_data/Default/Download Service/EntryDB/LOG.old
+browser/user_data/Default/Extension Rules/000003.log
+browser/user_data/Default/Extension Rules/CURRENT
+browser/user_data/Default/Extension Rules/LOCK
+browser/user_data/Default/Extension Rules/LOG
+browser/user_data/Default/Extension Rules/LOG.old
+browser/user_data/Default/Extension Rules/MANIFEST-000001
+browser/user_data/Default/Extension Scripts/000003.log
+browser/user_data/Default/Extension Scripts/CURRENT
+browser/user_data/Default/Extension Scripts/LOCK
+browser/user_data/Default/Extension Scripts/LOG
+browser/user_data/Default/Extension Scripts/LOG.old
+browser/user_data/Default/Extension Scripts/MANIFEST-000001
+browser/user_data/Default/Extension State/000003.log
+browser/user_data/Default/Extension State/CURRENT
+browser/user_data/Default/Extension State/LOCK
+browser/user_data/Default/Extension State/LOG
+browser/user_data/Default/Extension State/LOG.old
+browser/user_data/Default/Extension State/MANIFEST-000001
+browser/user_data/Default/Favicons
+browser/user_data/Default/Favicons-journal
+browser/user_data/Default/Feature Engagement Tracker/AvailabilityDB/LOCK
+browser/user_data/Default/Feature Engagement Tracker/AvailabilityDB/LOG
+browser/user_data/Default/Feature Engagement Tracker/AvailabilityDB/LOG.old
+browser/user_data/Default/Feature Engagement Tracker/EventDB/LOCK
+browser/user_data/Default/Feature Engagement Tracker/EventDB/LOG
+browser/user_data/Default/Feature Engagement Tracker/EventDB/LOG.old
+browser/user_data/Default/GCM Store/Encryption/000003.log
+browser/user_data/Default/GCM Store/Encryption/CURRENT
+browser/user_data/Default/GCM Store/Encryption/LOCK
+browser/user_data/Default/GCM Store/Encryption/LOG
+browser/user_data/Default/GCM Store/Encryption/LOG.old
+browser/user_data/Default/GCM Store/Encryption/MANIFEST-000001
+browser/user_data/Default/GPUCache/data_0
+browser/user_data/Default/GPUCache/data_1
+browser/user_data/Default/GPUCache/data_2
+browser/user_data/Default/GPUCache/data_3
+browser/user_data/Default/GPUCache/index
+browser/user_data/Default/History
+browser/user_data/Default/History-journal
+browser/user_data/Default/LOCK
+browser/user_data/Default/LOG
+browser/user_data/Default/LOG.old
+browser/user_data/Default/Local Storage/leveldb/000003.log
+browser/user_data/Default/Local Storage/leveldb/CURRENT
+browser/user_data/Default/Local Storage/leveldb/LOCK
+browser/user_data/Default/Local Storage/leveldb/LOG
+browser/user_data/Default/Local Storage/leveldb/LOG.old
+browser/user_data/Default/Local Storage/leveldb/MANIFEST-000001
+browser/user_data/Default/Login Data
+browser/user_data/Default/Login Data For Account
+browser/user_data/Default/Login Data For Account-journal
+browser/user_data/Default/Login Data-journal
+browser/user_data/Default/Network Action Predictor
+browser/user_data/Default/Network Action Predictor-journal
+browser/user_data/Default/Network Persistent State
+browser/user_data/Default/PersistentOriginTrials/LOCK
+browser/user_data/Default/PersistentOriginTrials/LOG
+browser/user_data/Default/PersistentOriginTrials/LOG.old
+browser/user_data/Default/Preferences
+browser/user_data/Default/PreferredApps
+browser/user_data/Default/README
+browser/user_data/Default/Reporting and NEL
+browser/user_data/Default/Reporting and NEL-journal
+browser/user_data/Default/SCT Auditing Pending Reports
+browser/user_data/Default/Safe Browsing Cookies
+browser/user_data/Default/Safe Browsing Cookies-journal
+browser/user_data/Default/Secure Preferences
+browser/user_data/Default/Segmentation Platform/SegmentInfoDB/LOCK
+browser/user_data/Default/Segmentation Platform/SegmentInfoDB/LOG
+browser/user_data/Default/Segmentation Platform/SegmentInfoDB/LOG.old
+browser/user_data/Default/Segmentation Platform/SignalDB/LOCK
+browser/user_data/Default/Segmentation Platform/SignalDB/LOG
+browser/user_data/Default/Segmentation Platform/SignalDB/LOG.old
+browser/user_data/Default/Segmentation Platform/SignalStorageConfigDB/LOCK
+browser/user_data/Default/Segmentation Platform/SignalStorageConfigDB/LOG
+browser/user_data/Default/Segmentation Platform/SignalStorageConfigDB/LOG.old
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/00b2a95a102d1cd2_0
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/12e9aa788ba90452_0
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/130be92b1784f8a8_0
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/26af1e5508417e4e_0
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/322e6a93f709c18a_0
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/4064bac07f854bd4_0
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/71aea255b8f77689_0
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/7cfbcb8b72f5408a_0
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/7cfbcb8b72f5408a_1
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/f844105521fc5de7_0
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/f9036d2d8fa3bfa8_0
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/index
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/f274c510-1376-499f-a2f4-089989eb9c6e/index-dir/the-real-index
+browser/user_data/Default/Service Worker/CacheStorage/36aec1492b38194efc75028c9d76ac639c9ea2bf/index.txt
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/2a385b05b3981c6e_0
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/3cbcae5cf38e7e49_0
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/463550103209d529_0
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/463550103209d529_1
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/5d68286594cf0607_0
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/6cce5eb2f1b276d8_0
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/9cdd7d03e808cb97_0
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/a02a95ee1338c588_0
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/b3c190457164846f_0
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/ec7b23f1da862c6f_0
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/fb7843f5060ee9e5_0
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/index
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/25eb8417-78b7-4587-835f-c98332c99a53/index-dir/the-real-index
+browser/user_data/Default/Service Worker/CacheStorage/6bb5160ce39faa7362b5cec0c45a46f349394d6a/index.txt
+browser/user_data/Default/Service Worker/Database/000003.log
+browser/user_data/Default/Service Worker/Database/CURRENT
+browser/user_data/Default/Service Worker/Database/LOCK
+browser/user_data/Default/Service Worker/Database/LOG
+browser/user_data/Default/Service Worker/Database/LOG.old
+browser/user_data/Default/Service Worker/Database/MANIFEST-000001
+browser/user_data/Default/Service Worker/ScriptCache/2cc80dabc69f58b6_0
+browser/user_data/Default/Service Worker/ScriptCache/2cc80dabc69f58b6_1
+browser/user_data/Default/Service Worker/ScriptCache/4cb013792b196a35_0
+browser/user_data/Default/Service Worker/ScriptCache/4cb013792b196a35_1
+browser/user_data/Default/Service Worker/ScriptCache/67a473248953641b_0
+browser/user_data/Default/Service Worker/ScriptCache/67a473248953641b_1
+browser/user_data/Default/Service Worker/ScriptCache/ba23d8ecda68de77_0
+browser/user_data/Default/Service Worker/ScriptCache/ba23d8ecda68de77_1
+browser/user_data/Default/Service Worker/ScriptCache/f1cdccba37924bda_0
+browser/user_data/Default/Service Worker/ScriptCache/f1cdccba37924bda_1
+browser/user_data/Default/Service Worker/ScriptCache/index
+browser/user_data/Default/Service Worker/ScriptCache/index-dir/the-real-index
+browser/user_data/Default/Session Storage/000003.log
+browser/user_data/Default/Session Storage/CURRENT
+browser/user_data/Default/Session Storage/LOCK
+browser/user_data/Default/Session Storage/LOG
+browser/user_data/Default/Session Storage/LOG.old
+browser/user_data/Default/Session Storage/MANIFEST-000001
+browser/user_data/Default/Sessions/Session_13399987679007756
+browser/user_data/Default/Sessions/Tabs_13399997843788778
+browser/user_data/Default/Shared Dictionary/cache/index
+browser/user_data/Default/Shared Dictionary/cache/index-dir/the-real-index
+browser/user_data/Default/Shared Dictionary/db
+browser/user_data/Default/Shared Dictionary/db-journal
+browser/user_data/Default/SharedStorage
+browser/user_data/Default/SharedStorage-wal
+browser/user_data/Default/Shortcuts
+browser/user_data/Default/Shortcuts-journal
+browser/user_data/Default/Site Characteristics Database/000003.log
+browser/user_data/Default/Site Characteristics Database/CURRENT
+browser/user_data/Default/Site Characteristics Database/LOCK
+browser/user_data/Default/Site Characteristics Database/LOG
+browser/user_data/Default/Site Characteristics Database/LOG.old
+browser/user_data/Default/Site Characteristics Database/MANIFEST-000001
+browser/user_data/Default/Sync Data/LevelDB/000003.log
+browser/user_data/Default/Sync Data/LevelDB/CURRENT
+browser/user_data/Default/Sync Data/LevelDB/LOCK
+browser/user_data/Default/Sync Data/LevelDB/LOG
+browser/user_data/Default/Sync Data/LevelDB/LOG.old
+browser/user_data/Default/Sync Data/LevelDB/MANIFEST-000001
+browser/user_data/Default/Top Sites
+browser/user_data/Default/Top Sites-journal
+browser/user_data/Default/TransportSecurity
+browser/user_data/Default/Trust Tokens
+browser/user_data/Default/Trust Tokens-journal
+browser/user_data/Default/Web Data
+browser/user_data/Default/Web Data-journal
+browser/user_data/Default/WebStorage/QuotaManager
+browser/user_data/Default/WebStorage/QuotaManager-journal
+browser/user_data/Default/chrome_cart_db/LOCK
+browser/user_data/Default/chrome_cart_db/LOG
+browser/user_data/Default/chrome_cart_db/LOG.old
+browser/user_data/Default/commerce_subscription_db/LOCK
+browser/user_data/Default/commerce_subscription_db/LOG
+browser/user_data/Default/commerce_subscription_db/LOG.old
+browser/user_data/Default/discounts_db/LOCK
+browser/user_data/Default/discounts_db/LOG
+browser/user_data/Default/discounts_db/LOG.old
+browser/user_data/Default/heavy_ad_intervention_opt_out.db
+browser/user_data/Default/heavy_ad_intervention_opt_out.db-journal
+browser/user_data/Default/optimization_guide_hint_cache_store/LOCK
+browser/user_data/Default/optimization_guide_hint_cache_store/LOG
+browser/user_data/Default/optimization_guide_hint_cache_store/LOG.old
+browser/user_data/Default/parcel_tracking_db/LOCK
+browser/user_data/Default/parcel_tracking_db/LOG
+browser/user_data/Default/parcel_tracking_db/LOG.old
+browser/user_data/Default/shared_proto_db/000003.log
+browser/user_data/Default/shared_proto_db/CURRENT
+browser/user_data/Default/shared_proto_db/LOCK
+browser/user_data/Default/shared_proto_db/LOG
+browser/user_data/Default/shared_proto_db/LOG.old
+browser/user_data/Default/shared_proto_db/MANIFEST-000001
+browser/user_data/Default/shared_proto_db/metadata/000003.log
+browser/user_data/Default/shared_proto_db/metadata/CURRENT
+browser/user_data/Default/shared_proto_db/metadata/LOCK
+browser/user_data/Default/shared_proto_db/metadata/LOG
+browser/user_data/Default/shared_proto_db/metadata/LOG.old
+browser/user_data/Default/shared_proto_db/metadata/MANIFEST-000001
+browser/user_data/Default/trusted_vault.pb
+browser/user_data/Dictionaries/en-US-10-1.bdic
+browser/user_data/GrShaderCache/data_0
+browser/user_data/GrShaderCache/data_1
+browser/user_data/GrShaderCache/data_2
+browser/user_data/GrShaderCache/data_3
+browser/user_data/GrShaderCache/index
+browser/user_data/GraphiteDawnCache/data_0
+browser/user_data/GraphiteDawnCache/data_1
+browser/user_data/GraphiteDawnCache/data_2
+browser/user_data/GraphiteDawnCache/data_3
+browser/user_data/GraphiteDawnCache/index
+browser/user_data/Last Version
+browser/user_data/Local State
+browser/user_data/ShaderCache/data_0
+browser/user_data/ShaderCache/data_1
+browser/user_data/ShaderCache/data_2
+browser/user_data/ShaderCache/data_3
+browser/user_data/ShaderCache/index
+browser/user_data/Variations
+browser/user_data/component_crx_cache/metadata.json
+browser/user_data/extensions_crx_cache/metadata.json
+browser/user_data/first_party_sets.db
+browser/user_data/first_party_sets.db-journal
+browser/user_data/segmentation_platform/ukm_db
+browser/user_data/segmentation_platform/ukm_db-wal
+components.json
+deploy_url.txt
+docs/research_plan_arcane_muscles.md
+docs/research_plan_main_repo_analysis.md
+eslint.config.js
+external_api/__init__.py
+external_api/data_sources/__init__.py
+external_api/data_sources/base.py
+external_api/data_sources/booking_source.py
+external_api/data_sources/client.py
+external_api/data_sources/commodities_source.py
+external_api/data_sources/metal_source.py
+external_api/data_sources/patents_source.py
+external_api/data_sources/pinterest_source.py
+external_api/data_sources/scholar_source.py
+external_api/data_sources/tripadvisor_source.py
+external_api/data_sources/twitter_source.py
+external_api/data_sources/yahoo_source.py
+external_api/function_utils.py
+external_api/mcp_function_list.json
+extract/ai_workout_generator.json
+extract/api_documentation.json
+extract/auth_routes.json
+extract/backend_main.json
+extract/backend_package_json.json
+extract/calendar_routes.json
+extract/context_providers.json
+extract/deployment_guide.json
+extract/docker_compose.json
+extract/frontend_app.json
+extract/frontend_components.json
+extract/frontend_package_json.json
+extract/frontend_structure.json
+extract/muscles_repo_main_page.json
+extract/payment_routes.json
+extract/project_overview.json
+extract/railway_config.json
+extract/services_directory.json
+extract/user_model.json
+extract/workout_model.json
+extract/workout_routes.json
+index.html
+memory/research_results.json
+memory/todo_meta.json
+memory/url_source_meta.json
+muscles-ai-fitness/README.md
+muscles-ai-fitness/components.json
+muscles-ai-fitness/eslint.config.js
+muscles-ai-fitness/index.html
+muscles-ai-fitness/nixpacks.toml
+muscles-ai-fitness/package.json
+muscles-ai-fitness/pnpm-lock.yaml
+muscles-ai-fitness/postcss.config.js
+muscles-ai-fitness/public/use.txt
+muscles-ai-fitness/railway.json
+muscles-ai-fitness/src/App.css
+muscles-ai-fitness/src/App.tsx
+muscles-ai-fitness/src/components/AuthPage.tsx
+muscles-ai-fitness/src/components/Dashboard.tsx
+muscles-ai-fitness/src/components/ErrorBoundary.tsx
+muscles-ai-fitness/src/components/FitCraftCoach.tsx
+muscles-ai-fitness/src/components/Navigation.tsx
+muscles-ai-fitness/src/components/Subscription.tsx
+muscles-ai-fitness/src/components/WorkoutGenerator.tsx
+muscles-ai-fitness/src/components/ui/alert.tsx
+muscles-ai-fitness/src/components/ui/badge.tsx
+muscles-ai-fitness/src/components/ui/button.tsx
+muscles-ai-fitness/src/components/ui/card.tsx
+muscles-ai-fitness/src/components/ui/dropdown-menu.tsx
+muscles-ai-fitness/src/components/ui/input.tsx
+muscles-ai-fitness/src/components/ui/label.tsx
+muscles-ai-fitness/src/components/ui/navigation-menu.tsx
+muscles-ai-fitness/src/components/ui/progress.tsx
+muscles-ai-fitness/src/components/ui/scroll-area.tsx
+muscles-ai-fitness/src/components/ui/select.tsx
+muscles-ai-fitness/src/components/ui/separator.tsx
+muscles-ai-fitness/src/components/ui/tabs.tsx
+muscles-ai-fitness/src/components/ui/textarea.tsx
+muscles-ai-fitness/src/contexts/AuthContext.tsx
+muscles-ai-fitness/src/hooks/use-mobile.tsx
+muscles-ai-fitness/src/index.css
+muscles-ai-fitness/src/lib/supabase.ts
+muscles-ai-fitness/src/lib/utils.ts
+muscles-ai-fitness/src/main.tsx
+muscles-ai-fitness/src/types/index.ts
+muscles-ai-fitness/tailwind.config.js
+muscles-ai-fitness/tsconfig.app.json
+muscles-ai-fitness/tsconfig.json
+muscles-ai-fitness/tsconfig.node.json
+muscles-ai-fitness/vite.config.ts
+muscles_review
+nixpacks.toml
+package.json
+pnpm-lock.yaml
+postcss.config.js
+public/use.txt
+pyproject.toml
+railway.json
+repo_check
+report_record.txt
+research/arcane_production_analysis.md
+research/integration_strategy.md
+research/main_repo_analysis.md
+shell_output_save/--porcelain_1755524371.txt
+shell_output_save/--save-dev_1755523888.txt
+shell_output_save/-la_1755515301.txt
+shell_output_save/build_1755511825.txt
+shell_output_save/build_1755523893.txt
+shell_output_save/build_1755523906.txt
+"shell_output_save/deployment\"_1755516908.txt"
+shell_output_save/main_1755524382.txt
+shell_output_save/main_1755524622.txt
+shell_output_save/master_1755513668.txt
+shell_output_save/master_1755513706.txt
+shell_output_save/master_1755514042.txt
+shell_output_save/muscles_review_1755517439.txt
+shell_output_save/status_1755516907.txt
+shell_output_save/status_1755524319.txt
+shell_output_save/status_1755524347.txt
+src/App.css
+src/App.tsx
+src/components/AuthPage.tsx
+src/components/Dashboard.tsx
+src/components/ErrorBoundary.tsx
+src/components/FitCraftCoach.tsx
+src/components/Navigation.tsx
+src/components/Subscription.tsx
+src/components/WorkoutGenerator.tsx
+src/components/ui/alert.tsx
+src/components/ui/badge.tsx
+src/components/ui/button.tsx
+src/components/ui/card.tsx
+src/components/ui/dropdown-menu.tsx
+src/components/ui/input.tsx
+src/components/ui/label.tsx
+src/components/ui/navigation-menu.tsx
+src/components/ui/progress.tsx
+src/components/ui/scroll-area.tsx
+src/components/ui/select.tsx
+src/components/ui/separator.tsx
+src/components/ui/tabs.tsx
+src/components/ui/textarea.tsx
+src/contexts/AuthContext.tsx
+src/hooks/use-mobile.tsx
+src/index.css
+src/lib/database.types.ts
+src/lib/supabase.ts
+src/lib/utils.ts
+src/main.tsx
+src/types/index.ts
+supabase/cron_jobs/job_1.json
+supabase/functions/ai-workout-generator/index.ts
+supabase/functions/create-bucket-exercise-videos-temp/index.ts
+supabase/functions/create-bucket-fitness-content-temp/index.ts
+supabase/functions/create-bucket-profile-avatars-temp/index.ts
+supabase/functions/create-bucket-workout-images-temp/index.ts
+supabase/functions/create-subscription/index.ts
+supabase/functions/fitcraft-ai-chat/index.ts
+supabase/functions/stripe-webhook/index.ts
+supabase/functions/subscription-sync-cron/index.ts
+supabase/migrations/1755523533_create_profile_trigger.sql
+supabase/tables/ai_chat_conversations.sql
+supabase/tables/ai_chat_flow_state.sql
+supabase/tables/ai_chat_messages.sql
+supabase/tables/calendar_connections.sql
+supabase/tables/calendar_events.sql
+supabase/tables/calendar_integrations.sql
+supabase/tables/exercise_logs.sql
+supabase/tables/exercise_templates.sql
+supabase/tables/fitcraft_chat_steps.sql
+supabase/tables/fitcraft_plans.sql
+supabase/tables/fitcraft_subscriptions.sql
+supabase/tables/fitness_plans.sql
+supabase/tables/fitness_subscriptions.sql
+supabase/tables/profiles.sql
+supabase/tables/workout_exercises.sql
+supabase/tables/workout_sessions.sql
+supabase/tables/workouts.sql
+supabase/types.ts
+tailwind.config.js
+tsconfig.app.json
+tsconfig.json
+tsconfig.node.json
+updated_project_plan.docx
+updated_project_plan.md
+updated_project_plan.pdf
+user_input_files/New Document.txt
+user_input_files/Railway Deployment Master.md
+user_input_files/Research-Based Insights for Optimizing HIIT and CrossFit Programs Across Body Types (1).pdf
+user_input_files/workout_samples.md
+uv.lock
+vite.config.ts
