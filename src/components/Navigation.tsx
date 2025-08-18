@@ -1,7 +1,18 @@
-import React from 'react'
+import React, { memo, useMemo, useCallback } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from '@/components/ui/navigation-menu'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,211 +22,229 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from '@/components/ui/navigation-menu'
-import {
-  Home,
+  LayoutDashboard,
   MessageCircle,
-  Zap,
+  Dumbbell,
   Calendar,
   CreditCard,
   User,
+  Settings,
   LogOut,
-  Dumbbell,
   Menu,
   X
 } from 'lucide-react'
-import { cn } from '@/lib/utils'
-
-type PageType = 'dashboard' | 'fitcraft' | 'workouts' | 'calendar' | 'subscription' | 'profile'
+import { PageType, NavigationItem } from '@/types'
+import { supabase } from '@/lib/supabase'
+import { useState } from 'react'
 
 interface NavigationProps {
   currentPage: PageType
   onNavigate: (page: PageType) => void
 }
 
-const navigationItems = [
-  {
-    id: 'dashboard' as PageType,
-    label: 'Dashboard',
-    icon: Home,
-    description: 'Your fitness overview'
-  },
-  {
-    id: 'fitcraft' as PageType,
-    label: 'FitCraft Coach',
-    icon: MessageCircle,
-    description: 'AI fitness trainer chat'
-  },
-  {
-    id: 'workouts' as PageType,
-    label: 'Workout Generator',
-    icon: Zap,
-    description: 'Create AI-powered workouts'
-  },
-  {
-    id: 'calendar' as PageType,
-    label: 'Calendar',
-    icon: Calendar,
-    description: 'Schedule your workouts'
-  },
-  {
-    id: 'subscription' as PageType,
-    label: 'Subscription',
-    icon: CreditCard,
-    description: 'Manage your plan'
-  }
-]
+// Memoized navigation item component
+const NavItem = memo(({ item, isActive, onClick }: {
+  item: NavigationItem
+  isActive: boolean
+  onClick: () => void
+}) => {
+  const Icon = item.icon
+  
+  return (
+    <Button
+      variant={isActive ? 'default' : 'ghost'}
+      className={`flex items-center gap-2 justify-start w-full ${isActive ? 'bg-blue-500 text-white' : 'text-gray-600 hover:text-gray-900'}`}
+      onClick={onClick}
+      disabled={item.disabled}
+    >
+      <Icon className="h-4 w-4" />
+      <span className="hidden sm:inline">{item.label}</span>
+      {item.badge && (
+        <Badge variant="secondary" className="ml-auto">
+          {item.badge}
+        </Badge>
+      )}
+    </Button>
+  )
+})
+NavItem.displayName = 'NavItem'
 
-export default function Navigation({ currentPage, onNavigate }: NavigationProps) {
-  const { user, profile, signOut } = useAuth()
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
-
-  const handleSignOut = async () => {
-    await signOut()
-    setMobileMenuOpen(false)
-  }
-
-  const handleNavigate = (page: PageType) => {
-    onNavigate(page)
-    setMobileMenuOpen(false)
-  }
+// Memoized user menu component
+const UserMenu = memo(({ user, profile, onSignOut }: {
+  user: any
+  profile: any
+  onSignOut: () => void
+}) => {
+  const userInitials = useMemo(() => {
+    const name = profile?.full_name || profile?.first_name || user?.email || 'U'
+    return name.split(' ').map((n: string) => n[0]).join('').toUpperCase().slice(0, 2)
+  }, [profile, user])
 
   return (
-    <nav className="bg-white border-b shadow-sm sticky top-0 z-50">
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+          <Avatar className="h-10 w-10">
+            <AvatarImage src={profile?.avatar_url} alt={profile?.full_name || 'User'} />
+            <AvatarFallback className="bg-blue-500 text-white">
+              {userInitials}
+            </AvatarFallback>
+          </Avatar>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56" align="end" forceMount>
+        <DropdownMenuLabel className="font-normal">
+          <div className="flex flex-col space-y-1">
+            <p className="text-sm font-medium leading-none">
+              {profile?.full_name || profile?.first_name || 'User'}
+            </p>
+            <p className="text-xs leading-none text-muted-foreground">
+              {profile?.email || user?.email}
+            </p>
+          </div>
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem className="cursor-pointer">
+          <User className="mr-2 h-4 w-4" />
+          <span>Profile</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">
+          <Settings className="mr-2 h-4 w-4" />
+          <span>Settings</span>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem className="cursor-pointer" onClick={onSignOut}>
+          <LogOut className="mr-2 h-4 w-4" />
+          <span>Log out</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+})
+UserMenu.displayName = 'UserMenu'
+
+// Main navigation component
+function Navigation({ currentPage, onNavigate }: NavigationProps) {
+  const { user, profile } = useAuth()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  // Memoized navigation items
+  const navigationItems = useMemo((): NavigationItem[] => [
+    {
+      id: 'dashboard',
+      label: 'Dashboard',
+      icon: LayoutDashboard,
+      description: 'Overview of your fitness journey'
+    },
+    {
+      id: 'fitcraft',
+      label: 'FitCraft Coach',
+      icon: MessageCircle,
+      description: 'AI-powered personal trainer'
+    },
+    {
+      id: 'workouts',
+      label: 'Workouts',
+      icon: Dumbbell,
+      description: 'Generate and manage workouts'
+    },
+    {
+      id: 'calendar',
+      label: 'Calendar',
+      icon: Calendar,
+      description: 'Schedule your fitness routine'
+    },
+    {
+      id: 'subscription',
+      label: 'Subscription',
+      icon: CreditCard,
+      description: 'Manage your plan and billing',
+      badge: profile?.subscription_plan === 'free' ? 'Upgrade' : undefined
+    },
+    {
+      id: 'profile',
+      label: 'Profile',
+      icon: User,
+      description: 'Account settings and preferences'
+    }
+  ], [profile?.subscription_plan])
+
+  // Memoized handlers
+  const handleNavigate = useCallback((page: PageType) => {
+    onNavigate(page)
+    setIsMobileMenuOpen(false)
+  }, [onNavigate])
+
+  const handleSignOut = useCallback(async () => {
+    try {
+      await supabase.auth.signOut()
+    } catch (error) {
+      console.error('Error signing out:', error)
+    }
+  }, [])
+
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(prev => !prev)
+  }, [])
+
+  return (
+    <nav className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="p-2 bg-blue-500 rounded-lg">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
               <Dumbbell className="h-5 w-5 text-white" />
             </div>
-            <div className="hidden sm:block">
-              <h1 className="text-xl font-bold text-gray-900">Muscles AI</h1>
-              <p className="text-xs text-gray-600 -mt-1">Fitness Platform</p>
-            </div>
+            <span className="text-xl font-bold text-gray-900 hidden sm:inline">
+              Muscles AI
+            </span>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <NavigationMenu>
-              <NavigationMenuList className="space-x-1">
-                {navigationItems.map((item) => {
-                  const IconComponent = item.icon
-                  const isActive = currentPage === item.id
-                  
-                  return (
-                    <NavigationMenuItem key={item.id}>
-                      <NavigationMenuLink asChild>
-                        <Button
-                          variant={isActive ? "default" : "ghost"}
-                          className={cn(
-                            "flex items-center space-x-2 px-3 py-2",
-                            isActive && "bg-blue-500 text-white hover:bg-blue-600"
-                          )}
-                          onClick={() => onNavigate(item.id)}
-                        >
-                          <IconComponent className="h-4 w-4" />
-                          <span className="hidden lg:inline">{item.label}</span>
-                        </Button>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  )
-                })}
-              </NavigationMenuList>
-            </NavigationMenu>
+          <div className="hidden md:flex items-center space-x-1">
+            {navigationItems.map((item) => (
+              <NavItem
+                key={item.id}
+                item={item}
+                isActive={currentPage === item.id}
+                onClick={() => handleNavigate(item.id)}
+              />
+            ))}
           </div>
 
           {/* User Menu */}
-          <div className="flex items-center space-x-3">
-            {/* Subscription Badge */}
-            <Badge variant="outline" className="hidden sm:flex">
-              {profile?.subscription_plan?.toUpperCase() || 'FREE'}
-            </Badge>
-
-            {/* User Dropdown */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center space-x-2 px-2">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                    <User className="h-4 w-4 text-white" />
-                  </div>
-                  <span className="hidden sm:inline font-medium text-sm">
-                    {profile?.first_name || profile?.full_name || user?.email?.split('@')[0] || 'User'}
-                  </span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <DropdownMenuLabel>
-                  <div>
-                    <p className="font-medium">{profile?.full_name || 'Fitness Warrior'}</p>
-                    <p className="text-sm text-gray-500">{user?.email}</p>
-                  </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => handleNavigate('profile')}>
-                  <User className="mr-2 h-4 w-4" />
-                  Profile Settings
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleNavigate('subscription')}>
-                  <CreditCard className="mr-2 h-4 w-4" />
-                  Subscription
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleSignOut} className="text-red-600">
-                  <LogOut className="mr-2 h-4 w-4" />
-                  Sign Out
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Mobile Menu Button */}
+          <div className="flex items-center gap-3">
+            {/* Mobile menu button */}
             <Button
               variant="ghost"
               size="sm"
               className="md:hidden"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={toggleMobileMenu}
             >
-              {mobileMenuOpen ? (
+              {isMobileMenuOpen ? (
                 <X className="h-5 w-5" />
               ) : (
                 <Menu className="h-5 w-5" />
               )}
             </Button>
+
+            <UserMenu user={user} profile={profile} onSignOut={handleSignOut} />
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t py-4">
-            <div className="space-y-2">
-              {navigationItems.map((item) => {
-                const IconComponent = item.icon
-                const isActive = currentPage === item.id
-                
-                return (
-                  <Button
-                    key={item.id}
-                    variant={isActive ? "default" : "ghost"}
-                    className={cn(
-                      "w-full justify-start space-x-3 h-12",
-                      isActive && "bg-blue-500 text-white hover:bg-blue-600"
-                    )}
-                    onClick={() => handleNavigate(item.id)}
-                  >
-                    <IconComponent className="h-4 w-4" />
-                    <div className="text-left">
-                      <p className="font-medium">{item.label}</p>
-                      <p className="text-xs opacity-75">{item.description}</p>
-                    </div>
-                  </Button>
-                )
-              })}
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-t border-gray-200 py-3">
+            <div className="space-y-1">
+              {navigationItems.map((item) => (
+                <NavItem
+                  key={item.id}
+                  item={item}
+                  isActive={currentPage === item.id}
+                  onClick={() => handleNavigate(item.id)}
+                />
+              ))}
             </div>
           </div>
         )}
@@ -223,3 +252,5 @@ export default function Navigation({ currentPage, onNavigate }: NavigationProps)
     </nav>
   )
 }
+
+export default memo(Navigation)
