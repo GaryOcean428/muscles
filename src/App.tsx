@@ -5,6 +5,7 @@ import { AuthProvider, useAuth } from '@/contexts/AuthContext'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import LoadingScreen from '@/components/LoadingScreen'
 import Navigation from '@/components/Navigation'
+import { SkipLinks, LiveRegion, FocusIndicator } from '@/components/Accessibility'
 import { setupGlobalErrorHandlers } from '@/utils/errorHandling'
 import { PageType } from '@/types'
 
@@ -86,8 +87,9 @@ function AppContent() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SkipLinks />
       <Navigation currentPage={currentPage} onNavigate={setCurrentPage} />
-      <main>
+      <main id="main-content" tabIndex={-1} role="main" aria-label="Main content">
         <ErrorBoundary
           onError={(error, errorInfo) => {
             console.error('Page error:', error, errorInfo)
@@ -100,6 +102,7 @@ function AppContent() {
           </Suspense>
         </ErrorBoundary>
       </main>
+      <LiveRegion />
     </div>
   )
 }
@@ -141,6 +144,7 @@ export default function App() {
     >
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
+          <FocusIndicator />
           <AppContent />
           <Toaster
             position="top-right"
@@ -165,6 +169,7 @@ export default function App() {
                 },
               },
             }}
+            aria-live="polite"
           />
         </AuthProvider>
       </QueryClientProvider>

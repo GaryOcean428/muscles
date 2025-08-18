@@ -2,37 +2,342 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base accessibility styles */
 @layer base {
+  /* Screen reader only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  .sr-only.focus-within:not-sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+  
+  /* Focus styles for better accessibility */
+  .focus-visible:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  
+  /* Remove focus outline for mouse users */
+  .focus-visible:focus:not(.focus-visible) {
+    outline: none;
+  }
+  
+  /* Ensure minimum contrast ratios */
   :root {
-    --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%
+    --color-text-primary: #1f2937;
+    --color-text-secondary: #6b7280;
+    --color-text-muted: #9ca3af;
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f9fafb;
+    --color-border: #e5e7eb;
+    --color-focus: #3b82f6;
+    --color-error: #dc2626;
+    --color-success: #059669;
+    --color-warning: #d97706;
   }
-
-  .dark {
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-text-primary: #f9fafb;
+      --color-text-secondary: #d1d5db;
+      --color-text-muted: #9ca3af;
+      --color-bg-primary: #111827;
+      --color-bg-secondary: #1f2937;
+      --color-border: #374151;
+    }
+  }
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --color-text-primary: #000000;
+      --color-text-secondary: #000000;
+      --color-bg-primary: #ffffff;
+      --color-border: #000000;
+    }
+    
+    .focus-visible:focus {
+      outline: 3px solid #000000;
+      outline-offset: 3px;
+    }
+    
+    button, input, select, textarea {
+      border: 2px solid #000000;
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* Ensure text is scalable */
+  html {
+    font-size: 16px;
+  }
+  
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  
+  /* Better spacing for touch targets */
+  button,
+  input,
+  select,
+  textarea,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Skip links styling */
+  .skip-links a {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000000;
+    color: #ffffff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: 4px;
+  }
+  
+  .skip-links a:focus {
+    top: 6px;
   }
 }
 
-
-
-img {
-  object-position: top;
+@layer components {
+  /* Accessible form components */
+  .form-group {
+    @apply space-y-2;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-900;
+  }
+  
+  .form-input {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm;
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+    @apply disabled:bg-gray-50 disabled:text-gray-500 disabled:cursor-not-allowed;
+  }
+  
+  .form-error {
+    @apply text-sm text-red-600;
+  }
+  
+  .form-help {
+    @apply text-sm text-gray-500;
+  }
+  
+  /* Accessible button variants */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent;
+    @apply text-sm font-medium rounded-md text-white bg-blue-600;
+    @apply hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-gray-300;
+    @apply text-sm font-medium rounded-md text-gray-700 bg-white;
+    @apply hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  /* Accessible card component */
+  .card {
+    @apply bg-white rounded-lg shadow border border-gray-200;
+  }
+  
+  .card-header {
+    @apply px-6 py-4 border-b border-gray-200;
+  }
+  
+  .card-content {
+    @apply px-6 py-4;
+  }
+  
+  /* Accessible navigation */
+  .nav-item {
+    @apply block px-3 py-2 rounded-md text-base font-medium;
+    @apply focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500;
+  }
+  
+  .nav-item-active {
+    @apply bg-blue-600 text-white;
+  }
+  
+  .nav-item-inactive {
+    @apply text-gray-600 hover:text-gray-900 hover:bg-gray-50;
+  }
+  
+  /* Loading states */
+  .loading-skeleton {
+    @apply animate-pulse bg-gray-200 rounded;
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full border-2 border-gray-300 border-t-blue-600;
+  }
+  
+  /* Status indicators */
+  .status-success {
+    @apply text-green-800 bg-green-100 border border-green-200;
+  }
+  
+  .status-error {
+    @apply text-red-800 bg-red-100 border border-red-200;
+  }
+  
+  .status-warning {
+    @apply text-yellow-800 bg-yellow-100 border border-yellow-200;
+  }
+  
+  .status-info {
+    @apply text-blue-800 bg-blue-100 border border-blue-200;
+  }
 }
 
-.fixed {
-  position: fixed;
+@layer utilities {
+  /* Custom focus utilities */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+  }
+  
+  .focus-ring-inset {
+    @apply focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500;
+  }
+  
+  /* Text scaling utilities */
+  .text-scale-sm {
+    @apply text-sm;
+  }
+  
+  .text-scale-md {
+    @apply text-base;
+  }
+  
+  .text-scale-lg {
+    @apply text-lg;
+  }
+  
+  /* Motion utilities */
+  .motion-safe {
+    @apply transition-all duration-200 ease-in-out;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .motion-safe {
+      @apply transition-none;
+    }
+  }
+  
+  /* Color contrast utilities */
+  .text-high-contrast {
+    color: var(--color-text-primary);
+  }
+  
+  .text-medium-contrast {
+    color: var(--color-text-secondary);
+  }
+  
+  .text-low-contrast {
+    color: var(--color-text-muted);
+  }
+  
+  .bg-high-contrast {
+    background-color: var(--color-bg-primary);
+  }
+  
+  .bg-medium-contrast {
+    background-color: var(--color-bg-secondary);
+  }
+}
+
+/* Custom scrollbar for better accessibility */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 6px;
+  border: 2px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+::-webkit-scrollbar-thumb:focus {
+  background: #888;
+  outline: 2px solid #3b82f6;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  * {
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a, a:visited {
+    text-decoration: underline;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  .btn-primary, .btn-secondary {
+    border: 1px solid #000;
+    background: transparent;
+    color: #000;
+  }
 }
