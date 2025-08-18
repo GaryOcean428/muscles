@@ -1,4 +1,0 @@
-# Root requirements.txt for Railway deployment
-# References the actual requirements file in the backend directory
-
--r backend/api/requirements.txt
