@@ -1,67 +1,8 @@
 # Dependencies
 node_modules/
-<<<<<<< HEAD
-*/node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
-pnpm-lock.yaml
-
-# Yarn 4.9.2+ specific
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnp.*
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual environments
-venv/
-env/
-ENV/
-env.bak/
-venv.bak/
-test_env/
-
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.env.production
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
-# Logs
-logs/
-=======
 .pnpm-debug.log*
 
 # Environment files - NEVER COMMIT
@@ -96,52 +37,17 @@ dist-ssr
 
 # Logs
 logs
->>>>>>> development
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Runtime data
-<<<<<<< HEAD
-pids/
-=======
 pids
->>>>>>> development
 *.pid
 *.seed
 *.pid.lock
 
 # Coverage directory used by tools like istanbul
 coverage/
-<<<<<<< HEAD
-
-# nyc test coverage
-.nyc_output
-
-# Grunt intermediate storage
-.grunt
-
-# Bower dependency directory
-bower_components
-
-# node-waf configuration
-.lock-wscript
-
-# Compiled binary addons
-build/Release
-
-# Dependency directories
-jspm_packages/
-
-# TypeScript v1 declaration files
-typings/
-=======
 *.lcov
-
-# Dependency directories
-node_modules/
->>>>>>> development
 
 # Optional npm cache directory
 .npm
@@ -164,136 +70,7 @@ node_modules/
 # Yarn Integrity file
 .yarn-integrity
 
-<<<<<<< HEAD
 # parcel-bundler cache
-.cache
-.parcel-cache
-
-# next.js build output
-.next
-
-# nuxt.js build output
-.nuxt
-
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# React build
-build/
-dist/
-
-# Flask
-instance/
-.webassets-cache
-
-# Pytest
-.pytest_cache/
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# celery beat schedule file
-celerybeat-schedule
-
-# SageMath parsed files
-*.sage.py
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# Backup files
-*.bak
-*.backup
-*.tmp
-
-# SSL certificates
-*.pem
-*.key
-*.crt
-
-# Docker
-.dockerignore
-# Prevent root-level Dockerfiles that conflict with railpack.json
-Dockerfile
-Dockerfile.python
-Dockerfile.fallback
-
-# Uploads
-uploads/
-temp/
-
-# Android
-android/app/build/
-android/build/
-android/.gradle/
-android/local.properties
-android/gradle.properties
-android/keystore.properties
-
-# iOS
-ios/build/
-ios/Pods/
-ios/*.xcworkspace/xcuserdata/
-ios/*.xcodeproj/xcuserdata/
-
-# React Native
-*.jks
-*.p8
-*.p12
-*.mobileprovision
-*.orig.*
-web-build/
-
-# Expo
-.expo/
-.expo-shared/
-
-=======
-# parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache
 
@@ -302,7 +79,6 @@ web-build/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Storybook build outputs
 .out
@@ -315,4 +91,3 @@ temp/
 # Supabase local development
 .branches
 .temp
->>>>>>> development
