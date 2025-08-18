@@ -1,0 +1,52 @@
+# Development files
+node_modules/
+src/
+public/
+*.log
+.env.local
+.env.development
+.DS_Store
+
+# Documentation
+README.md
+*.md
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+*.test.*
+*.spec.*
+__tests__/
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Linting
+.eslintcache
+
+# Build artifacts (keep dist/)
+# dist/ - DO NOT IGNORE, needed for deployment
+
+# Development configs
+vite.config.ts
+tsconfig.json
+tsconfig.node.json
+tsconfig.app.json
+eslint.config.js
+postcss.config.js
+tailwind.config.js
