@@ -1,0 +1,23 @@
+CREATE TABLE workout_sessions (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    user_id UUID NOT NULL,
+    workout_id UUID NOT NULL,
+    started_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    completed_at TIMESTAMP WITH TIME ZONE,
+    duration_seconds INTEGER,
+    duration_minutes INTEGER,
+    calories_burned INTEGER,
+    perceived_exertion INTEGER,
+    notes TEXT,
+    rating INTEGER,
+    workout_type TEXT,
+    exercises_completed INTEGER DEFAULT 0,
+    total_exercises INTEGER DEFAULT 0,
+    intensity_level TEXT DEFAULT 'moderate',
+    completion_rate DECIMAL(5,2) DEFAULT 0,
+    workout_data JSONB,
+    personal_records JSONB,
+    status TEXT DEFAULT 'in_progress',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
