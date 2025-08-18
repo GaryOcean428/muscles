@@ -1,12 +1,23 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { HelmetProvider } from 'react-helmet-async'
 import { Toaster } from 'react-hot-toast'
 import { AuthProvider, useAuth } from '@/contexts/AuthContext'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import LoadingScreen from '@/components/LoadingScreen'
 import Navigation from '@/components/Navigation'
 import { SkipLinks, LiveRegion, FocusIndicator } from '@/components/Accessibility'
+import { 
+  SEOHead, 
+  DashboardSEO, 
+  WorkoutGeneratorSEO, 
+  FitCraftCoachSEO, 
+  CalendarSEO, 
+  ProfileSEO, 
+  SubscriptionSEO 
+} from '@/components/SEO'
 import { setupGlobalErrorHandlers } from '@/utils/errorHandling'
+import { initializeMonitoring } from '@/utils/monitoring'
 import { PageType } from '@/types'
 
 // Lazy load components for better performance
@@ -39,8 +50,9 @@ const queryClient = new QueryClient({
   },
 })
 
-// Setup global error handlers
+// Setup global error handlers and monitoring
 setupGlobalErrorHandlers()
+initializeMonitoring()
 
 function AppContent() {
   const { user, profile, loading } = useAuth()
@@ -123,56 +135,78 @@ function PageRenderer({ currentPage, onNavigate }: PageRendererProps) {
     profile: ProfilePage,
   } as const
 
+  const seoComponents = {
+    dashboard: DashboardSEO,
+    fitcraft: FitCraftCoachSEO,
+    workouts: WorkoutGeneratorSEO,
+    calendar: CalendarSEO,
+    subscription: SubscriptionSEO,
+    profile: ProfileSEO,
+  } as const
+
   const PageComponent = pageComponents[currentPage]
+  const SEOComponent = seoComponents[currentPage]
 
   if (!PageComponent) {
     console.warn(`Unknown page: ${currentPage}. Falling back to Dashboard.`)
-    return <Dashboard onNavigate={onNavigate} />
+    return (
+      <>
+        <DashboardSEO />
+        <Dashboard onNavigate={onNavigate} />
+      </>
+    )
   }
 
-  return <PageComponent onNavigate={onNavigate} />
+  return (
+    <>
+      <SEOComponent />
+      <PageComponent onNavigate={onNavigate} />
+    </>
+  )
 }
 
 export default function App() {
   return (
-    <ErrorBoundary
-      onError={(error, errorInfo) => {
-        console.error('App-level error:', error, errorInfo)
-        // TODO: Log to monitoring service
-      }}
-      showErrorDetails={import.meta.env.DEV}
-    >
-      <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <FocusIndicator />
-          <AppContent />
-          <Toaster
-            position="top-right"
-            toastOptions={{
-              duration: 4000,
-              style: {
-                background: '#363636',
-                color: '#fff',
-                borderRadius: '8px',
-                fontSize: '14px',
-              },
-              success: {
-                iconTheme: {
-                  primary: '#10B981',
-                  secondary: '#fff',
+    <HelmetProvider>
+      <ErrorBoundary
+        onError={(error, errorInfo) => {
+          console.error('App-level error:', error, errorInfo)
+          // TODO: Log to monitoring service
+        }}
+        showErrorDetails={import.meta.env.DEV}
+      >
+        <QueryClientProvider client={queryClient}>
+          <AuthProvider>
+            <FocusIndicator />
+            <AppContent />
+            <Toaster
+              position="top-right"
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  background: '#363636',
+                  color: '#fff',
+                  borderRadius: '8px',
+                  fontSize: '14px',
                 },
-              },
-              error: {
-                iconTheme: {
-                  primary: '#EF4444',
-                  secondary: '#fff',
+                success: {
+                  iconTheme: {
+                    primary: '#10B981',
+                    secondary: '#fff',
+                  },
                 },
-              },
-            }}
-            aria-live="polite"
-          />
-        </AuthProvider>
-      </QueryClientProvider>
-    </ErrorBoundary>
+                error: {
+                  iconTheme: {
+                    primary: '#EF4444',
+                    secondary: '#fff',
+                  },
+                },
+              }}
+              aria-live="polite"
+            />
+          </AuthProvider>
+        </QueryClientProvider>
+      </ErrorBoundary>
+    </HelmetProvider>
   )
 }
